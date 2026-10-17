@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>지갑칩 N배지 실험 — Charlie</title>
+<meta name="description" content="알림 배지와 탭 알림 연동을 두 변수로 나눠 검증하고, 광고 수치의 이상치를 걷어낸 뒤 정식화를 판단한 과정.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./">Charlie<span>.</span></a>
+    <nav class="nav" aria-label="섹션">
+      <a href="./#experiments" aria-current="page">Experiments</a><a href="./#systems">Systems</a><a href="./#foundation" class="hide-m">Foundation</a><a href="./#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="project">
+    <p class="kicker">Case 04 · KakaoTalk 더보기탭</p>
+    <h1>지갑칩 N배지 실험</h1>
+    <p class="lede">더보기탭 안의 지갑 영역은 전자문서나 인증 같은 중요한 소식이 와도 사용자가 알아차리기 어려웠습니다. 새 소식이 있으면 칩에 N배지를 붙이고, 그 배지를 하단 탭 알림과 연동하는 두 변수로 나눠 실험했습니다. 광고 매출 수치에 한 사용자의 이상치가 섞인 것을 걷어낸 뒤 판단해, 매출 영향 없이 트래픽을 늘린 안을 정식화했습니다.</p>
+
+    <div class="spec">
+      <div><span>Year</span>2026.01 – 2026.04</div>
+      <div><span>Experiment</span>대조군 + 2안 · 각 2% · 2주</div>
+      <div><span>Role</span>N배지·알림 UI · 정식화 가이드</div>
+      <div><span>Decision</span>A안 정식화</div>
+    </div>
+
+    <section class="block">
+      <p class="label">Problem</p>
+      <h2>중요한 소식이 와도 지갑까지 닿지 않았다</h2>
+      <p>지갑 칩의 방문자는 더보기탭 방문자의 일부에 그쳤습니다. 전자문서 수신이나 인증 이력처럼 확인이 필요한 일이 생겨도, 칩에는 아무 표시가 없었습니다.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">Hypothesis</p>
+      <h2>배지를 탭 알림과 이으면 더 늘어난다</h2>
+      <p>N배지만으로도 방문이 늘고, 하단 탭 알림과 연동하면 더 크게 늘 것이라고 봤습니다. 두 효과를 따로 볼 수 있도록 실험군을 둘로 나눴습니다. 가드레일은 선물하기 총 매출과 홈 영역 광고 매출로 정했습니다.</p>
+      <ul class="points"><li><b>A · N배지 + 탭 알림 연동</b>칩의 배지가 켜지면 하단 탭에도 알림 점이 켜집니다.</li><li><b>B · N배지만</b>칩에만 배지를 붙이고 탭 알림과는 잇지 않습니다.</li></ul>
+    </section>
+
+    <section class="block">
+      <p class="label">Result</p>
+      <h2>탭 알림 연동이 결과를 갈랐다</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>지표 · 대조군 대비</th><th>A · 배지 + 탭 알림</th><th>B · 배지만</th></tr></thead>
+          <tbody>
+            <tr><td>지갑칩 방문</td><td class="pos">+48.1%</td><td>+19.3%</td></tr>
+            <tr><td>지갑칩 1인당 방문</td><td class="pos">+13.1%</td><td>—</td></tr>
+            <tr><td>선물하기 전체 거래액</td><td>−1.4% (유의하지 않음)</td><td>—</td></tr>
+            <tr><td>광고 매출</td><td>+3.7%</td><td>유의차 없음</td></tr>
+            <tr class="verdict"><td>판정</td><td>정식화</td><td class="neg">제외</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>광고 매출은 처음에 A안에서 +15%로 집계됐습니다. 들여다보니 한 사용자가 비정상적으로 많은 노출과 클릭을 만든 이상치였고, 이를 제외하자 +3.7%로 내려왔습니다. 정식화 판단은 이 값으로 했습니다.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">Decision</p>
+      <h2>매출 영향 없이 트래픽을 늘린 안을 정식화했다</h2>
+      <p>A안을 정식 적용했고, 지금 모든 사용자에게 노출되고 있습니다. 하단 탭에 배지 모양을 그대로 연동하는 후속 실험도 설계했지만, 효과 대비 복잡도를 고려해 진행하지 않았습니다.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">My Role</p>
+      <h2>배지와 알림의 화면 규칙을 설계했다</h2>
+      <div class="role"><div><h3>리드한 것</h3><ul><li>N배지·탭 알림 연동 UI</li><li>배지가 켜지고 꺼지는 규칙의 화면 설계</li><li>정식화 디자인 가이드</li></ul></div><div><h3>함께 한 것</h3><ul><li>실험 설계 — PM·데이터 분석가</li><li>광고 영향 분석 — 광고 인사이트 조직</li><li>정식화 결정 — 스쿼드·상위 리더</li></ul></div></div>
+    </section>
+
+    <nav class="pager" aria-label="다른 프로젝트">
+      <a href="pay-boosting.html"><small>Previous</small>페이 영역 트래픽 부스팅 실험</a>
+      <a href="pay-personalization.html" style="text-align:right"><small>Next</small>페이 영역 개인화·넛지 실험</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Charlie (Chang-hyub Lee)</span>
+    <span class="links"><a href="https://www.linkedin.com/in/chang-hyub-lee-55b30063" target="_blank" rel="noopener">LinkedIn ↗</a><span>forevergtr@gmail.com</span></span>
+  </div>
+</footer>
+</body>
+</html>
