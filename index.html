@@ -9,13 +9,14 @@
 <meta property="og:description" content="수백만 명이 매일 여는 화면을, 실험으로 다시 설계합니다.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/gallery.css">
 </head>
 <body>
 <header class="site-header">
   <div class="wrap">
     <a class="logo" href="./">Charlie<span>.</span></a>
     <nav class="nav" aria-label="섹션">
-      <a href="#experiments">Experiments</a><a href="#systems">Systems</a><a href="#foundation" class="hide-m">Foundation</a><a href="about.html">About</a>
+      <a href="#experiments">Experiments</a><a href="#systems">Systems</a><a href="#foundation" class="hide-m">Redesigns</a><a href="about.html">About</a>
     </nav>
   </div>
 </header>
@@ -63,138 +64,72 @@
     </div>
   </section>
 
-  <section class="wrap section" id="experiments" aria-labelledby="h-exp">
-    <div class="section-head">
-      <h2 id="h-exp">Experiments</h2>
-      <p class="section-lead">가설과 판단 기준을 정하고, 실험 결과를 통해 개선 방향을 검토한 사례입니다.</p>
-    </div>
-    <div class="exp">
-      <div class="exp-list">
-        <p class="exp-group">탐색 경험을 개선하기 위한 연속 실험</p>
-        <ol class="exp-chain">
-          <li>
-            <a class="exp-row" href="pay-boosting.html" data-case="1">
-              <span class="exp-num">01</span>
-              <span class="exp-body">
-                <span class="exp-title">페이 영역 트래픽 부스팅</span>
-                <span class="exp-q">결제 영역을 확장하면 탭 이용과 광고 매출이 함께 늘어날까요?</span>
-                <span class="exp-meta"><span class="exp-verdict is-held">출시 보류</span><span class="exp-fig is-neg">광고 매출 −7.2%</span></span>
-              </span>
-              <canvas class="exp-mini" aria-hidden="true"></canvas>
-            </a>
-            <p class="exp-link">탐색 영역을 분리해 다시 검증</p>
-          </li>
-          <li>
-            <a class="exp-row" href="list-exploration.html" data-case="2">
-              <span class="exp-num">02</span>
-              <span class="exp-body">
-                <span class="exp-title">리스트형 탐색 강화</span>
-                <span class="exp-q">서비스의 배치와 순서를 바꾸면 탐색 행동이 달라질까요?</span>
-                <span class="exp-meta"><span class="exp-verdict">B안 채택</span><span class="exp-fig">광고 매출 +24.9%</span></span>
-              </span>
-              <canvas class="exp-mini" aria-hidden="true"></canvas>
-            </a>
-            <p class="exp-link">서비스 클릭 감소를 후속 검증</p>
-          </li>
-          <li>
-            <a class="exp-row" href="grid-list-hybrid.html" data-case="3">
-              <span class="exp-num">03</span>
-              <span class="exp-body">
-                <span class="exp-title">그리드·리스트 혼합 UI</span>
-                <span class="exp-q">주요 서비스를 첫 화면에 유지하면 클릭 감소를 줄일 수 있을까요?</span>
-                <span class="exp-meta"><span class="exp-verdict is-live">진행 중</span><span class="exp-fig is-quiet">중간 결과 분석 중</span></span>
-              </span>
-              <canvas class="exp-mini" aria-hidden="true"></canvas>
-            </a>
-          </li>
-        </ol>
-        <p class="exp-group">각각의 문제를 검증한 실험</p>
-        <ol class="exp-solo">
-          <li>
-            <a class="exp-row" href="wallet-badge.html" data-case="4">
-              <span class="exp-num">04</span>
-              <span class="exp-body">
-                <span class="exp-title">지갑칩 N배지</span>
-                <span class="exp-q">확인할 소식이 있음을 표시하면 지갑 방문이 늘어날까요?</span>
-                <span class="exp-meta"><span class="exp-verdict">정식 적용</span><span class="exp-fig">지갑칩 방문 +48.1%</span></span>
-              </span>
-              <canvas class="exp-mini" aria-hidden="true"></canvas>
-            </a>
-          </li>
-          <li>
-            <a class="exp-row" href="pay-personalization.html" data-case="5">
-              <span class="exp-num">05</span>
-              <span class="exp-body">
-                <span class="exp-title">페이 영역 개인화·넛지</span>
-                <span class="exp-q">가입 상태에 맞는 정보를 보여주면 서비스 이용이 늘어날까요?</span>
-                <span class="exp-meta"><span class="exp-verdict">정식 스펙 반영</span><span class="exp-fig">자산 메뉴 클릭률 약 +49%</span></span>
-              </span>
-              <canvas class="exp-mini" aria-hidden="true"></canvas>
-            </a>
-          </li>
-        </ol>
-      </div>
-      <div class="exp-figure" aria-hidden="true">
-        <div class="exp-figure__sticky">
-          <canvas id="exp-canvas"></canvas>
-          <p class="exp-figure__cap" id="exp-cap"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap section" id="systems" aria-labelledby="h-sys">
-    <div class="section-head">
-      <h2 id="h-sys">Systems</h2>
-      <p class="section-lead">반복해서 확인해야 하는 디자인 규칙과 데이터를 도구로 정리했습니다.</p>
-    </div>
-    <ul class="sys">
-      <li><a href="talklint.html">
-        <span class="sys-name">TalkLint</span>
-        <span class="sys-role">디자인 시스템 검수 도구</span>
-        <span class="sys-desc">반복되는 디자인 시스템 검수 작업을 줄이기 위해 만든 Figma 플러그인입니다. 규칙과 가이드의 근거를 확인하고, 최종 적용 여부는 디자이너가 판단합니다.</span>
-        <span class="sys-meta">45건 실측 · 프레임당 검수 227초 → 84초</span>
+  <section class="gal-wrap section" id="experiments" aria-labelledby="h-exp">
+    <h2 class="gal-title" id="h-exp">Experiments</h2>
+    <ul class="gal">
+      <li><a href="pay-boosting.html">
+        <div class="gal-thumb"><img src="img/case01.webp" width="1092" height="705" alt="3차 실험안의 페이 영역. 노란 결제 헤더 아래 계좌 잔액과 이번 달 쓴 돈이 송금·내역 버튼과 함께 펼쳐져 있다"></div>
+        <h3>페이 영역 트래픽 부스팅 실험<span class="gal-badge is-held" title="출시 보류">HOLD</span></h3>
+        <p class="gal-desc">이용 변화와 매출 영향을 함께 검증했습니다.</p>
       </a></li>
-      <li><a href="data-tools.html">
-        <span class="sys-name">디자이너의 데이터 도구</span>
-        <span class="sys-role">실험 지표 조회·확인 도구</span>
-        <span class="sys-desc">필요한 데이터를 직접 확인할 수 있도록 데이터 분석가와 지표 정의를 맞춰 만든 도구입니다. 진행 중인 실험의 이상 신호를 발견하는 데 활용했습니다.</span>
-        <span class="sys-meta">지표 조회 · 이상 신호 확인</span>
+      <li><a href="list-exploration.html">
+        <div class="gal-thumb"><img src="img/case02-a.webp" width="1092" height="705" alt="B안의 쇼핑 카테고리 리스트 확대. 선물하기, 받은선물, 톡딜, 라이브쇼핑이 이름과 한 줄 설명으로 놓여 있다"></div>
+        <h3>리스트형 탐색 강화 실험<span class="gal-badge" title="B안 채택">SELECTED</span></h3>
+        <p class="gal-desc">매출은 개선됐지만 서비스 클릭 감소가 남았습니다.</p>
       </a></li>
-      <li><a href="https://leche.github.io/trend-articles/" target="_blank" rel="noopener">
-        <span class="sys-name">트렌드림</span>
-        <span class="sys-role">디자인 트렌드 큐레이션</span>
-        <span class="sys-desc">매일 디자인 아티클을 찾아 요약하고 발행하는 과정을 자동화했습니다. 발행할 내용은 직접 검수하며 개인 프로젝트로 운영하고 있습니다.</span>
-        <span class="sys-meta">2026.03 — 현재 · 운영 중 ↗</span>
+      <li><a href="grid-list-hybrid.html">
+        <div class="gal-thumb"><img src="img/case03-a.webp" width="1092" height="705" alt="혼합 UI 실험안에서 고른 두 부분을 엇갈려 배치한 편집 이미지. 위는 5열 2행 그래픽 아이콘 그리드, 아래는 라이프 카테고리 리스트"></div>
+        <h3>그리드·리스트 혼합 UI 실험<span class="gal-badge is-quiet" title="진행 중">WIP</span></h3>
+        <p class="gal-desc">첫 화면 노출과 리스트 탐색을 함께 검증 중입니다.</p>
+      </a></li>
+      <li><a href="wallet-badge.html">
+        <div class="gal-thumb"><img src="img/case04.webp" width="1092" height="705" alt="더보기탭 머리 영역의 홈·지갑·게임 칩. 지갑 칩에 N배지가 붙어 있고, 아래 하단 탭바의 더보기 탭에 빨간점이 켜져 있다"></div>
+        <h3>지갑칩 N배지 실험<span class="gal-badge" title="정식 적용">LIVE</span></h3>
+        <p class="gal-desc">지갑칩 N배지와 탭 빨간점의 연동을 검증했습니다.</p>
+      </a></li>
+      <li><a href="pay-personalization.html">
+        <div class="gal-thumb"><img src="img/case05.webp" width="1092" height="705" alt="미가입자에게 보이는 페이 넛지 띠. 송금은 물론, 결제도 간편하게 문구와 시작 버튼, 그 아래로 서비스 그리드가 이어진다"></div>
+        <h3>페이 영역 개인화·넛지 실험<span class="gal-badge" title="정식 스펙 반영">LIVE</span></h3>
+        <p class="gal-desc">가입 상태에 맞는 정보와 행동을 검증했습니다.</p>
       </a></li>
     </ul>
   </section>
 
-  <section class="wrap section" id="foundation" aria-labelledby="h-fnd">
-    <div class="section-head">
-      <h2 id="h-fnd">Foundation</h2>
-      <p class="section-lead">검색과 콘텐츠 앱의 구조를 개편하며 쌓아온 경험입니다.</p>
-    </div>
-    <ol class="fnd">
+  <section class="gal-wrap section" id="systems" aria-labelledby="h-sys">
+    <h2 class="gal-title" id="h-sys">Systems</h2>
+    <ul class="gal">
+      <li><a href="talklint.html">
+        <div class="gal-thumb"><img src="img/talklint.webp" width="1092" height="705" alt="TalkLint 수정 미리보기의 바꿀 색 고르기와 전후 비교. 연한 노랑 버튼이 지금, 디자인 시스템 노랑으로 바뀐 버튼이 고친 뒤"></div>
+        <h3>TalkLint</h3>
+        <p class="gal-desc">검수와 수정을 Figma 안에서 이어서 합니다.</p>
+      </a></li>
+      <li><a href="data-tools.html">
+        <div class="gal-thumb"><img src="img/datatool.webp" width="1092" height="705" alt="자연어로 지난주 지표 요약을 요청하고 주간 지표 목록을 받는 대화 화면. 수치는 예시 값"></div>
+        <h3>디자이너의 데이터 도구</h3>
+        <p class="gal-desc">지표 조회와 해석을 디자이너가 직접 합니다.</p>
+      </a></li>
+      <li><a href="https://leche.github.io/trend-articles/" target="_blank" rel="noopener">
+        <div class="gal-thumb"><img src="img/trend.webp" width="1092" height="705" alt="트렌드림 웹사이트 첫 화면. 오늘의 기사 수와 요약 문단, 첫 기사 제목"></div>
+        <h3>트렌드림 ↗</h3>
+        <p class="gal-desc">아티클 수집·요약·발행을 자동화했습니다.</p>
+      </a></li>
+    </ul>
+  </section>
+
+  <section class="gal-wrap section" id="foundation" aria-labelledby="h-fnd">
+    <h2 class="gal-title" id="h-fnd">Redesigns</h2>
+    <ul class="gal">
       <li><a href="daum-app.html">
-        <span class="fnd-year">2024 — 2025</span>
-        <span class="fnd-body">
-          <span class="fnd-title">다음앱 전면 개편</span>
-          <span class="fnd-sub">Daum App</span>
-          <span class="fnd-desc">하단 탭과 화면 진입 흐름을 포함해 앱 전체의 정보 구조를 다시 설계했습니다. 디자인 시스템 구축에도 참여했습니다.</span>
-          <span class="fnd-meta">출시 후 주간 활성 사용자 최대 +18% · 복합 요인 반영</span>
-        </span>
+        <div class="gal-thumb"><img src="img/daumapp.webp" width="1092" height="705" alt="다음앱 개편 화면 두 장. 인사말과 검색창, 날씨·증시 카드가 있는 홈과 추천 피드 화면"></div>
+        <h3>다음앱 전면 개편</h3>
+        <p class="gal-desc">하단 탭부터 진입 흐름까지 앱 구조를 재설계했습니다.</p>
       </a></li>
       <li><a href="daum-search.html">
-        <span class="fnd-year">2019 — 2020</span>
-        <span class="fnd-body">
-          <span class="fnd-title">다음 통합검색 정답형 개편</span>
-          <span class="fnd-sub">Daum Search</span>
-          <span class="fnd-desc">별도로 운영되던 인물·장소·방송 검색을 하나의 정보 구조로 통합하고, 공통 UI 기준을 마련했습니다.</span>
-          <span class="fnd-meta">Design Lead · 정답형 검색 구조 통합</span>
-        </span>
+        <div class="gal-thumb"><img src="img/daumsearch.webp" width="1092" height="705" alt="다음 통합검색 인물 결과 두 장. 멤버 사진, 소속사·데뷔 정보, 곡 목록"></div>
+        <h3>다음 통합검색 정답형 개편</h3>
+        <p class="gal-desc">인물·장소·방송 검색을 하나의 구조로 묶었습니다.</p>
       </a></li>
-    </ol>
+    </ul>
   </section>
 </main>
 
@@ -206,6 +141,5 @@
 </footer>
 <script src="js/hero.js"></script>
 <script src="js/thoughts.js"></script>
-<script src="js/experiments.js"></script>
 </body>
 </html>

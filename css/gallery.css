@@ -1,0 +1,29 @@
+/* 프로젝트 갤러리 — 실제 UI 썸네일 3열. 썸네일 안에는 글자·숫자·배지를 얹지 않는다 */
+.gal-wrap { width:calc(100% - 80px); max-width:1360px; margin-inline:auto; }
+.gal { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:64px 24px; list-style:none; padding:0; margin:0; }
+.gal a { display:block; color:inherit; text-decoration:none; }
+.gal-thumb { aspect-ratio:1092/705; background:#F5F5F5; overflow:hidden; }
+.gal-thumb img { display:block; width:100%; height:100%; object-fit:cover; }
+.gal-id { margin-top:16px; font-size:12px; font-weight:500; color:var(--cap); }
+.gal h3 { margin-top:16px; display:flex; align-items:center; flex-wrap:wrap; gap:4px 10px; font-size:19px; font-weight:600; letter-spacing:-.02em; line-height:1.4; }
+.gal a:hover h3, .gal a:focus-visible h3 { text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px; }
+.gal-desc { margin-top:6px; font-size:14px; color:var(--sub); line-height:1.6; }
+.gal-res { margin-top:10px; font-size:13px; font-weight:500; color:var(--ink); }
+.gal-res .is-held { color:var(--signal-text); }
+.gal-res .is-quiet { color:var(--cap); }
+.gal-thumb.is-missing { background:#F5F5F5; } /* 원본 미확보 — 로컬 검수 전용, 공개 금지 */
+@media (max-width:1279px) { .gal { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:820px) {
+  .gal-wrap { width:calc(100% - 40px); }
+  .gal { grid-template-columns:1fr; gap:48px; }
+  .gal h3 { font-size:18px; }
+}
+/* 상태 배지 — 옅은 단색 배경, 라운드 4px(리체 지정 예외). 빨강은 출시 보류 같은 결과 의미일 때만 */
+.gal-badge { display:inline-block; font-size:11px; font-weight:600; line-height:1; letter-spacing:.04em; padding:5px 7px; border-radius:4px; background:#EFEFF1; color:var(--ink); position:relative; top:-1px; }
+.gal-badge.is-held { background:var(--held-bg); color:var(--signal-text); }
+.gal-badge.is-quiet { color:var(--sub); }
+/* 섹션 제목 — 설명·가로선 없이 제목 다음 곧바로 카드. 간격은 박스 경계 기준 */
+.gal-wrap.section { padding-top:96px; }
+.gal-title { font-size:26px; line-height:36px; font-weight:600; color:var(--ink); margin:0 0 32px; }
+@media (max-width:1199px) { .gal-wrap.section { padding-top:80px; scroll-margin-top:16px; } .gal-title { font-size:24px; line-height:34px; margin-bottom:28px; } }
+@media (max-width:767px) { .gal-wrap.section { padding-top:72px; scroll-margin-top:24px; } #experiments.gal-wrap.section { padding-top:64px; } .gal-title { font-size:22px; line-height:30px; margin-bottom:24px; } }
