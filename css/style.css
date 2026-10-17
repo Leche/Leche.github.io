@@ -76,20 +76,27 @@ img { max-width:100%; display:block; }
 a.card:hover .thumb { border-color:var(--ink); }
 a.card:hover h3 { text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px; }
 
-/* about */
-.about { padding-top:96px; display:grid; grid-template-columns:1fr 1fr; gap:48px; }
-.about h2 { font-size:22px; font-weight:700; letter-spacing:-.02em; margin-bottom:20px; }
-.about p { color:var(--sub); line-height:1.8; }
-.about p + p { margin-top:14px; }
-.timeline { list-style:none; border-left:2px solid var(--hair); padding-left:22px; margin-left:5px; }
-.timeline li { position:relative; padding-bottom:20px; }
-.timeline li:last-child { padding-bottom:0; }
-/* 점 중심 = 세로선 중심(x) · 날짜 글자 잉크 중심(y, js/timeline.js가 계산) */
-.timeline li::before { content:''; position:absolute; left:-28px; top:var(--dot-y, 5px); width:10px; height:10px; border-radius:50%; background:var(--bg); border:2px solid var(--ink); }
-.timeline li.now::before { background:var(--ink); }
-.timeline small { display:block; font-size:12px; font-weight:500; line-height:20px; color:var(--cap); }
-.timeline b { font-size:15px; font-weight:600; }
-.timeline span { display:block; font-size:13px; color:var(--sub); }
+/* about page — 왼쪽 라벨 · 오른쪽 본문(홈 에세이와 같은 5:7 배치) */
+.about-page { padding-top:96px; }
+.about-head, .about-block { display:grid; grid-template-columns:5fr 7fr; gap:48px; }
+.about-block { margin-top:88px; padding-top:28px; border-top:1px solid var(--hair); }
+.about-label { font-size:13px; font-weight:600; color:var(--cap); }
+.about-head h1 { font-size:clamp(32px,3.6vw,44px); font-weight:700; letter-spacing:-.02em; line-height:1.25; }
+.about-head h1 span { color:var(--cap); font-weight:500; }
+.about-role { margin-top:12px; font-size:16px; color:var(--sub); }
+.career { list-style:none; display:grid; gap:40px; }
+.career > li { display:grid; grid-template-columns:140px 1fr; gap:24px; }
+.career-period { font-size:13px; font-weight:500; color:var(--cap); font-variant-numeric:tabular-nums; padding-top:3px; }
+.career h3 { font-size:17px; font-weight:600; letter-spacing:-.01em; }
+.career-role { margin-top:2px; font-size:14px; color:var(--sub); }
+.career ul { margin-top:14px; list-style:none; display:grid; gap:8px; }
+.career ul li { position:relative; padding-left:14px; font-size:15px; line-height:1.75; color:var(--ink); }
+.career ul li::before { content:''; position:absolute; left:0; top:.8em; width:5px; height:1px; background:var(--cap); }
+.contact { display:grid; gap:14px; font-size:15px; }
+.contact div { display:grid; grid-template-columns:140px 1fr; gap:24px; }
+.contact dt { font-size:13px; font-weight:500; color:var(--cap); padding-top:2px; }
+.contact dd { user-select:all; }
+.contact dd a { user-select:auto; text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line); }
 
 /* footer */
 .site-footer { margin-top:112px; border-top:1px solid var(--hair); }
@@ -131,7 +138,9 @@ a.card:hover h3 { text-decoration:underline; text-underline-offset:4px; text-dec
   :root { --gutter:20px; }
   .nav { gap:16px; font-size:13px; } .nav a.hide-m { display:none; }
   .hero .meta { grid-template-columns:1fr 1fr; row-gap:16px; } .hero .hint { display:none; }
-  .about { grid-template-columns:1fr; gap:24px; } .section, .about { padding-top:64px; }
+  .section { padding-top:64px; }
+  .about-head, .about-block { grid-template-columns:1fr; gap:16px; } .about-block { margin-top:56px; } .about-page { padding-top:56px; }
+  .career > li, .contact div { grid-template-columns:1fr; gap:4px; }
   .thoughts-grid { grid-template-columns:1fr; gap:16px; } .thought-list { margin-top:20px; gap:16px; } .thought { font-size:19px; }
   #thoughts-canvas { aspect-ratio:auto; height:38svh; }
   .essay { grid-template-columns:1fr; gap:16px; padding-top:80px; } .essay-label { position:static; } .essay-body p { font-size:16px; line-height:1.9; }
