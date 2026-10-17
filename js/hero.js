@@ -1,79 +1,116 @@
-// D안 — 셰이더 글리치 워드마크.
-// 포트폴리오 덱 표지의 색수차 셰이더를 2D 캔버스로 재현한다.
-// 텍스트를 오프스크린에 그린 뒤 R/G/B 채널을 서로 다른 오프셋으로 합성하고, 가장자리 번짐(bloom)과
-// 주기적인 가로 슬라이스 글리치를 더한다. 포인터 위치가 수차 방향을 바꾼다.
+// Hero — 선으로만 그린 흑백 정육면체.
+// 진입: 모서리가 하나씩 그려지며 나타난다 → 천천히 회전한다.
+// 포인터: 커서 쪽으로 살짝 기운다. 드래그: 관성을 가지고 돌다가 원래 회전으로 돌아온다.
+// 면에는 3×3 격자, 안쪽에는 반대로 도는 작은 정육면체. 뒤쪽 선일수록 옅게 그려 깊이를 만든다.
 (() => {
-  const c = document.getElementById('hero-canvas');
-  if (!c) return;
-  const ctx = c.getContext('2d');
-  const word = c.dataset.word || 'PORTFOLIO';
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W, H, dpr, base, R, G, B, mx = 0.5, my = 0.5, visible = true;
 
-  function tint(src, color) {
-    const t = document.createElement('canvas'); t.width = src.width; t.height = src.height;
-    const g = t.getContext('2d'); g.drawImage(src, 0, 0);
-    g.globalCompositeOperation = 'source-in'; g.fillStyle = color; g.fillRect(0, 0, t.width, t.height);
-    return t;
+  // 단위 정육면체(-1..1)의 모서리와 면 격자 선
+  const V = [];
+  for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) V.push([x, y, z]);
+  const EDGES = [];
+  for (let i = 0; i < 8; i++) for (let j = i + 1; j < 8; j++) {
+    const diff = V[i].reduce((s, v, k) => s + (v !== V[j][k] ? 1 : 0), 0);
+    if (diff === 1) EDGES.push([V[i], V[j]]);
   }
-  function build() {
+  const GRID = [];
+  for (let axis = 0; axis < 3; axis++) for (const side of [-1, 1]) for (const t of [-1 / 3, 1 / 3]) {
+    const a = (axis + 1) % 3, b = (axis + 2) % 3;
+    const p = (u, v) => { const q = [0, 0, 0]; q[axis] = side; q[a] = u; q[b] = v; return q; };
+    GRID.push([p(t, -1), p(t, 1)], [p(-1, t), p(1, t)]);
+  }
+
+  let W, H, dpr, size, cx, cy;
+  function layout() {
     dpr = Math.min(2, window.devicePixelRatio || 1);
-    W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr;
-    base = document.createElement('canvas'); base.width = c.width; base.height = c.height;
-    const b = base.getContext('2d');
-    // 본문(.wrap)의 왼쪽 거터와 콘텐츠 폭에 맞춘다
-    const wrap = c.parentElement.querySelector('.wrap');
-    const cs = getComputedStyle(wrap), rect = wrap.getBoundingClientRect(), cRect = c.getBoundingClientRect();
-    const left = (rect.left - cRect.left) + parseFloat(cs.paddingLeft);
-    const contentW = rect.width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-    // 글자 잉크의 양 끝이 좌우 거터선에 정확히 닿도록 크기를 맞춘다(세로 상한 34%)
-    let fs = 200;
-    b.font = `800 ${fs}px "Pretendard Variable", Pretendard, sans-serif`;
-    const m0 = b.measureText(word), ink0 = m0.actualBoundingBoxLeft + m0.actualBoundingBoxRight;
-    fs = Math.min(fs * contentW / ink0, H * 0.34);
-    b.font = `800 ${fs * dpr}px "Pretendard Variable", Pretendard, sans-serif`;
-    b.textAlign = 'left'; b.textBaseline = 'alphabetic'; b.fillStyle = '#F5F6F7';
-    const m = b.measureText(word);
-    const ink = (m.actualBoundingBoxLeft + m.actualBoundingBoxRight) / dpr;
-    const x = (left + (contentW - ink) / 2 + m.actualBoundingBoxLeft / dpr) * dpr;  // 세로 상한에 걸리면 가운데, 아니면 양끝 정렬
-    b.fillText(word, x, c.height * 0.46);
-    R = tint(base, '#ff2a1a'); G = tint(base, '#ffe04a'); B = tint(base, '#2a6cff');
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    // 메타 줄(하단 약 120px) 위 공간의 가운데에 놓고, 회전해도 그 공간을 넘지 않게 크기를 잡는다
+    const free = H - 150;
+    size = Math.min(W * 0.14, free * 0.24);
+    cx = W / 2; cy = free * 0.52;
   }
-  const t0 = performance.now();
-  function draw(now) {
-    const t = reduce ? 10 : (now - t0) / 1000;
-    const settle = Math.max(0, 1 - t / 1.6);               // 진입 1.6초 동안 크게 흔들리다 안정
-    const breathe = 0.5 + 0.5 * Math.sin(t * 1.3);
-    const amp = (3.5 + breathe * 2.5 + settle * 40) * dpr;   // 기본 수차 3.5 — 덱 셰이더와 같은 출발점
-    const ax = (mx - 0.5) * 2, ay = (my - 0.5) * 2;
-    ctx.clearRect(0, 0, c.width, c.height);
-    ctx.globalCompositeOperation = 'lighter';
-    ctx.filter = `blur(${(6 + settle * 10) * dpr}px)`; ctx.globalAlpha = 0.35;
-    ctx.drawImage(R, -amp * 1.4 + ax * amp, ay * amp * 0.4);
-    ctx.drawImage(B, amp * 1.4 + ax * amp, -ay * amp * 0.4);
-    ctx.filter = 'none'; ctx.globalAlpha = 1;
-    ctx.drawImage(R, -amp + ax * amp * 0.6, 0);
-    ctx.drawImage(G, 0, 0);
-    ctx.drawImage(B, amp + ax * amp * 0.6, 0);
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.globalAlpha = 0.85; ctx.drawImage(base, 0, 0); ctx.globalAlpha = 1;
-    if (!reduce && ((t % 2.4) < 0.18 || settle > 0.2)) {     // 약 2.4초마다 0.18초 글리치
-      for (let i = 0; i < 5; i++) {
-        const sy = Math.random() * c.height * 0.8 + c.height * 0.05;
-        const sh = (4 + Math.random() * 26) * dpr, off = (Math.random() - 0.5) * 60 * dpr;
-        ctx.drawImage(c, 0, sy, c.width, sh, off, sy, c.width, sh);
-      }
+
+  // 회전 상태
+  const BASE_X = -0.52;
+  let rx = BASE_X, ry = 0.72;           // 현재 각도
+  let vx = 0, vy = 0;                   // 드래그 관성
+  let tiltX = 0, tiltY = 0, tx = 0, ty = 0;
+  const AUTO = 0.0032;                  // 기본 회전 속도(rad/frame)
+  let dragging = false, lastX = 0, lastY = 0, inner = 0;
+
+  const rot = (p, ax, ay) => {
+    let [x, y, z] = p;
+    let c = Math.cos(ay), s = Math.sin(ay); [x, z] = [x * c + z * s, -x * s + z * c];
+    c = Math.cos(ax); s = Math.sin(ax); [y, z] = [y * c - z * s, y * s + z * c];
+    return [x, y, z];
+  };
+  const proj = (p, scale) => { const d = 4.2, k = d / (d - p[2]); return [cx + p[0] * size * scale * k, cy + p[1] * size * scale * k]; };
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const depthAlpha = (z, front, back) => back + (front - back) * ((z + 1) / 2);   // z: -1 뒤 ~ 1 앞
+
+  function drawSet(seg, ax, ay, scale, o, t) {
+    seg.forEach((e, i) => {
+      const a = rot(e[0], ax, ay), b = rot(e[1], ax, ay);
+      const p = reduce ? 1 : Math.min(1, Math.max(0, (t - i * o.stagger) / o.dur));
+      if (p <= 0) return;
+      const pa = proj(a, scale), pb = proj(b, scale), k = easeOut(p);
+      ctx.strokeStyle = `rgba(25,25,25,${depthAlpha((a[2] + b[2]) / 2, o.front, o.back)})`;
+      ctx.lineWidth = o.width * dpr;
+      ctx.beginPath();
+      ctx.moveTo(pa[0] * dpr, pa[1] * dpr);
+      ctx.lineTo((pa[0] + (pb[0] - pa[0]) * k) * dpr, (pa[1] + (pb[1] - pa[1]) * k) * dpr);
+      ctx.stroke();
+    });
+  }
+
+  const start = performance.now();
+  function frame(now) {
+    const t = (now - start) / 1000;
+    if (!dragging && !reduce) {
+      vx *= 0.94; vy *= 0.94;
+      ry += AUTO + vy; rx += vx;
+      rx += (BASE_X - rx) * 0.01;         // 세로 기울기는 천천히 기본값으로 복귀
+      inner -= AUTO * 1.6;
     }
+    tiltX += (tx - tiltX) * 0.06; tiltY += (ty - tiltY) * 0.06;
+    const ax = rx + tiltX, ay = ry + tiltY;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.lineCap = 'round';
+    drawSet(GRID, ax, ay, 1, { front: 0.22, back: 0.06, width: 1, stagger: 0.02, dur: 0.6 }, t - 0.5);
+    drawSet(EDGES, ax, inner, 0.42, { front: 0.55, back: 0.15, width: 1, stagger: 0.05, dur: 0.5 }, t - 0.9);
+    drawSet(EDGES, ax, ay, 1, { front: 1, back: 0.28, width: 1.5, stagger: 0.07, dur: 0.6 }, t);
+
+    if (!reduce) requestAnimationFrame(frame);
   }
-  function loop(now) { if (visible) draw(now); if (!reduce) requestAnimationFrame(loop); }
 
-  window.addEventListener('resize', () => { build(); if (reduce) draw(performance.now()); });
-  window.addEventListener('pointermove', e => { mx = e.clientX / innerWidth; my = e.clientY / innerHeight; }, { passive: true });
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(c);
+  // 포인터: 커서 쪽으로 기울기
+  window.addEventListener('pointermove', e => {
+    if (dragging || reduce) return;
+    const r = canvas.getBoundingClientRect();
+    if (e.clientY > r.bottom || e.clientY < r.top) return;
+    tx = ((e.clientY - r.top) / r.height - 0.5) * 0.35;
+    ty = ((e.clientX - r.left) / r.width - 0.5) * 0.5;
+  }, { passive: true });
+  // 드래그: 직접 돌리기 + 관성
+  canvas.addEventListener('pointerdown', e => {
+    dragging = true; lastX = e.clientX; lastY = e.clientY; vx = vy = 0;
+    canvas.classList.add('dragging'); canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX, dy = e.clientY - lastY; lastX = e.clientX; lastY = e.clientY;
+    vy = dx * 0.006; vx = -dy * 0.006; ry += vy; rx += vx;
+    if (reduce) frame(performance.now());
+  });
+  const end = () => { dragging = false; canvas.classList.remove('dragging'); };
+  canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end);
 
-  // 히어로를 지나면 헤더를 라이트로 되돌린다
-  const header = document.querySelector('.site-header');
-  if (header) new IntersectionObserver(([e]) => header.classList.toggle('on-dark', e.isIntersecting), { rootMargin: '-64px 0px 0px 0px' }).observe(c.parentElement);
-
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { build(); reduce ? draw(performance.now()) : requestAnimationFrame(loop); });
+  window.addEventListener('resize', () => { layout(); if (reduce) frame(performance.now()); });
+  layout();
+  requestAnimationFrame(frame);
 })();
