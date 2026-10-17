@@ -76,7 +76,7 @@ a.card:hover h3 { text-decoration:underline; text-underline-offset:4px; text-dec
 .timeline { list-style:none; border-left:2px solid var(--line); padding-left:22px; margin-left:5px; } /* 점 중심 = 세로선 중심(x), 날짜 줄 중심(y) */
 .timeline li { position:relative; padding-bottom:20px; }
 .timeline li:last-child { padding-bottom:0; }
-.timeline li::before { content:''; position:absolute; left:-28px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--bg); border:2px solid var(--ink); }
+.timeline li::before { content:''; box-sizing:border-box; position:absolute; left:-28px; top:var(--dot-y, 5px); width:10px; height:10px; border-radius:50%; background:var(--bg); border:2px solid var(--ink); }
 .timeline li.now::before { background:var(--ink); }
 .timeline small { display:block; font-size:12px; line-height:20px; color:var(--cap); }
 .timeline b { font-size:15px; }
