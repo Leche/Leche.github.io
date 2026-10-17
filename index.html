@@ -35,14 +35,32 @@
 </section>
 
 <main>
-  <div class="wrap intro">
-    <h2>안녕하세요, 카카오톡 더보기탭을 설계하는 프로덕트 디자이너 이창협입니다.</h2>
-    <div>
-      <p>더보기탭은 결제·서비스·광고가 한 화면에 모이고, 수백만 명이 매일 여는 지면입니다. 저는 이 스쿼드의 유일한 프로덕트 디자이너로, 사용자의 탐색 경험과 커머스·광고 매출이 부딪히는 자리에서 무엇을 바꿀지 데이터로 정합니다. 가설과 가드레일을 먼저 세우고 A/B 실험으로 판단하며, 숫자가 좋아 보여도 기준을 넘으면 출시하지 않습니다.</p>
-      <p>홈 화면을 꾸미던 취미가 첫 디자인이었습니다. 비전공으로 시작해 런처 스타트업의 첫 디자이너로 일했고, 카카오에서 통합검색과 다음앱의 구조를 개편했습니다. 흩어진 정보와 요구를 사용자가 이해할 수 있는 하나의 구조로 묶는 일을 14년째 하고 있습니다. 반복되는 판단은 도구에 맡기되, 결과를 확인하고 적용을 결정하는 책임은 사람에게 남겨둡니다.</p>
-      <p class="en">I'm Charlie, a Senior Product Designer at KakaoTalk. I redesign a screen opened by millions every day through A/B experiments — setting hypotheses and guardrails first, and holding a launch when the numbers cross the line.</p>
+  <section class="thoughts" id="thoughts" aria-labelledby="h-thoughts">
+    <div class="thoughts-stage">
+      <div class="wrap thoughts-grid">
+        <div class="thoughts-text">
+          <p class="thoughts-label" id="h-thoughts">디자인에 대한 생각</p>
+          <p class="thought-count"><b>01</b> / 03</p>
+          <ol class="thought-list">
+            <li class="thought on">사용자가 무엇을 하려는지, 제품은 무엇을 이루려는지 함께 살핍니다.</li>
+            <li class="thought">정보와 요구가 복잡할수록 이해하기 쉬운 구조로 정리하는 데 시간을 씁니다.</li>
+            <li class="thought">설계한 변화가 실제로 어떤 차이를 만들었는지 확인합니다.</li>
+          </ol>
+        </div>
+        <canvas id="thoughts-canvas" aria-hidden="true"></canvas>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="wrap essay" aria-labelledby="h-essay">
+    <p class="essay-label" id="h-essay">Story</p>
+    <div class="essay-body">
+      <p>제가 처음 만든 디자인은 휴대폰 홈 화면이었습니다. 생명공학을 전공했지만, 관심이 있었던 안드로이드 홈 화면을 독학으로 꾸미고 스킨을 만들었습니다. 그 작업이 커뮤니티에서 알려지면서 런처 스타트업의 첫 디자이너로 일하게 됐습니다. 처음부터 디자이너가 되겠다는 계획을 세우고 시작한 일은 아니었습니다.</p>
+      <p>이후 카카오에서 통합검색과 다음앱을 맡았습니다. 검색 결과를 더 쉽게 이해할 수 있도록 정리하고, 여러 기능과 정보가 모인 앱의 구조를 새로 만드는 일을 했습니다. 그 과정에서 화면을 설계하는 것만큼이나 서로 다른 요구를 이해하고, 무엇이 중요한지 판단하는 데 많은 시간이 필요하다는 걸 배웠습니다. 제품이 복잡해질수록 모든 요구를 담기보다는 사용자가 실제로 필요로 하는 것이 무엇인지 먼저 생각하게 됐습니다.</p>
+      <p>지금은 카카오톡 더보기탭에서 사용자 경험과 비즈니스 목표를 함께 고려하며 일하고 있습니다. PM, 데이터 분석가와 함께 가설을 세우고 A/B 실험으로 결과를 확인합니다. 탐색 지표는 좋아졌지만 미리 정한 매출 기준을 충족하지 못해, 여러 차례 실험한 개편안을 결국 출시하지 않은 적도 있습니다. 좋은 방향이라고 생각했던 디자인도 실제 결과를 확인하면 판단이 달라질 수 있다는 걸 경험했습니다.</p>
+      <p>돌아보면 다뤄온 제품은 꽤 달랐지만, 관심을 두는 일은 크게 바뀌지 않았습니다. 복잡하게 얽힌 문제를 이해하고, 사람들이 쓰기 편한 구조를 찾고, 실제 사용에서 어떻게 작동하는지 확인하는 일입니다. 14년에 가까운 시간 동안 조금씩 일하는 방식은 달라졌지만, 이 과정은 여전히 재미있습니다.</p>
+    </div>
+  </section>
 
   <section class="wrap section" id="experiments" aria-labelledby="h-exp">
     <div class="section-head"><h2 id="h-exp">Experiments</h2><p>카카오톡 더보기탭 · 2025 – 2026 · 대조군 대비 상대값</p></div>
@@ -125,7 +143,6 @@
   <section class="wrap about" id="about" aria-labelledby="h-about">
     <div>
       <h2 id="h-about">About</h2>
-      <p>화면을 만들기 전에 두 가지를 확인합니다. 이 디자인이 제품에 어떤 변화를 만드는가, 그 변화가 사용자에게 좋은 경험으로 남는가.</p>
       <p>경북대학교 생명공학부를 졸업했습니다. 이력서와 자세한 경력은 LinkedIn에서 보실 수 있고, 메일은 forevergtr@gmail.com 입니다.</p>
     </div>
     <ol class="timeline" aria-label="경력">
@@ -145,5 +162,6 @@
 </footer>
 <script src="js/hero.js"></script>
 <script src="js/timeline.js"></script>
+<script src="js/thoughts.js"></script>
 </body>
 </html>

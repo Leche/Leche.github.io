@@ -37,12 +37,24 @@ img { max-width:100%; display:block; }
 .hero .meta span { display:block; font-size:12px; font-weight:500; letter-spacing:.02em; color:var(--cap); margin-bottom:6px; }
 .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
-/* intro */
-.intro { padding-top:96px; display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:start; }
-.intro h2 { font-size:clamp(28px,3.2vw,40px); font-weight:700; letter-spacing:-.02em; line-height:1.35; text-wrap:balance; }
-.intro p { color:var(--sub); font-size:16px; line-height:1.75; }
-.intro p + p { margin-top:14px; }
-.intro .en { font-size:14px; color:var(--cap); }
+/* 디자인에 대한 생각 — 스크롤 고정 무대(300svh 동안 세 원칙이 차례로 켜진다) */
+.thoughts { position:relative; height:300svh; border-bottom:1px solid var(--hair); }
+.thoughts-stage { position:sticky; top:64px; height:calc(100svh - 64px); min-height:520px; display:flex; align-items:center; }
+.thoughts-grid { width:100%; display:grid; grid-template-columns:5fr 7fr; gap:48px; align-items:center; }
+.thoughts-label { font-size:13px; font-weight:600; color:var(--cap); }
+.thought-count { margin-top:8px; font-size:13px; font-weight:500; color:var(--cap); font-variant-numeric:tabular-nums; }
+.thought-count b { color:var(--ink); font-weight:600; }
+.thought-list { list-style:none; margin-top:36px; display:grid; gap:28px; }
+.thought { font-size:clamp(20px,2vw,26px); font-weight:600; letter-spacing:-.02em; line-height:1.45; color:#D0D2D5; transition:color .5s ease; text-wrap:balance; }
+.thought.on { color:var(--ink); }
+#thoughts-canvas { width:100%; aspect-ratio:7/6; max-height:calc(100svh - 160px); }
+
+/* 에세이 — 좁은 한 단, 글만 */
+.essay { padding-top:128px; display:grid; grid-template-columns:5fr 7fr; gap:48px; }
+.essay-label { font-size:13px; font-weight:600; color:var(--cap); position:sticky; top:96px; align-self:start; }
+.essay-body { max-width:640px; }
+.essay-body p { font-size:17px; line-height:1.95; color:var(--ink); }
+.essay-body p + p { margin-top:1.6em; }
 
 /* sections */
 .section { padding-top:96px; }
@@ -119,7 +131,10 @@ a.card:hover h3 { text-decoration:underline; text-underline-offset:4px; text-dec
   :root { --gutter:20px; }
   .nav { gap:16px; font-size:13px; } .nav a.hide-m { display:none; }
   .hero .meta { grid-template-columns:1fr 1fr; row-gap:16px; } .hero .hint { display:none; }
-  .intro, .about { grid-template-columns:1fr; gap:24px; } .intro, .section, .about { padding-top:64px; }
+  .about { grid-template-columns:1fr; gap:24px; } .section, .about { padding-top:64px; }
+  .thoughts-grid { grid-template-columns:1fr; gap:16px; } .thought-list { margin-top:20px; gap:16px; } .thought { font-size:19px; }
+  #thoughts-canvas { aspect-ratio:auto; height:38svh; }
+  .essay { grid-template-columns:1fr; gap:16px; padding-top:80px; } .essay-label { position:static; } .essay-body p { font-size:16px; line-height:1.9; }
   .grid { grid-template-columns:1fr; }
   .spec { grid-template-columns:1fr 1fr; } .role { grid-template-columns:1fr; }
 }
