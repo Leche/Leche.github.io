@@ -64,83 +64,138 @@
   </section>
 
   <section class="wrap section" id="experiments" aria-labelledby="h-exp">
-    <div class="section-head"><h2 id="h-exp">Experiments</h2><p>카카오톡 더보기탭 · 2025 – 2026 · 대조군 대비 상대값</p></div>
-    <div class="grid">
-      <a class="card" href="pay-boosting.html">
-        <div class="thumb"><span class="stamp">Case 01</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="광고 매출 -7.2%, 출시 보류"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="64" font-weight="700" letter-spacing="-2" fill="#E5432B">−7.2%</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">탐색 +5.0%, 광고 매출 −7.2%</text></svg></div>
-        <h3>페이 영역 트래픽 부스팅 실험 <span class="badge held">출시 보류</span></h3>
-        <p class="result">같은 가설을 조건을 바꿔 세 번 검증했고, 결과가 엇갈리자 <b>출시 대신 다음 실험으로</b> 판단을 옮겼습니다.</p>
-      </a>
-      <a class="card" href="list-exploration.html">
-        <div class="thumb"><span class="stamp">Case 02</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="광고 매출 +24.9%"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="64" font-weight="700" letter-spacing="-2" fill="currentColor">+24.9%</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">광고 매출 · 커머스 가드레일 방어</text></svg></div>
-        <h3>리스트형 탐색 강화 실험 <span class="badge">채택</span></h3>
-        <p class="result">첫 화면 밖 서비스가 클릭되지 않는 문제를 구조로 다시 정의하고, <b>배치 순서가 클릭을 움직인다</b>는 레버를 찾았습니다.</p>
-      </a>
-      <a class="card" href="grid-list-hybrid.html">
-        <div class="thumb"><span class="stamp">Case 03</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="5개 버킷, 진행 중"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="64" font-weight="700" letter-spacing="-2" fill="currentColor">5 buckets</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">그리드 구성만 바꾼 실험 · 진행 중</text></svg></div>
-        <h3>그리드·리스트 혼합 UI 실험 <span class="badge live">진행 중</span></h3>
-        <p class="result">중간 결과를 직접 집계하다 <b>실험군 일부에서 알림 표시가 빠지는 버그</b>를 찾아 실험을 살렸습니다.</p>
-      </a>
-      <a class="card" href="wallet-badge.html">
-        <div class="thumb"><span class="stamp">Case 04</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="지갑칩 방문 +48.1%"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="64" font-weight="700" letter-spacing="-2" fill="currentColor">+48.1%</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">지갑칩 방문 · 매출 영향 없음</text></svg></div>
-        <h3>지갑칩 N배지 실험 <span class="badge">정식화</span></h3>
-        <p class="result">배지와 탭 알림 연동을 두 변수로 나눠 검증하고, <b>이상치를 걷어낸 뒤</b> 정식화를 판단했습니다.</p>
-      </a>
-      <a class="card" href="pay-personalization.html">
-        <div class="thumb"><span class="stamp">Case 05</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="자산 메뉴 클릭률 약 49% 증가"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="64" font-weight="700" letter-spacing="-2" fill="currentColor">+49%</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">자산 메뉴 클릭률 · 추천 모델 채택안</text></svg></div>
-        <h3>페이 영역 개인화·넛지 실험</h3>
-        <p class="result">제휴사가 직접 실험하는 구조를 만들고, <b>화면의 기준은 디자인 가이드로</b> 지켰습니다.</p>
-      </a>
+    <div class="section-head">
+      <h2 id="h-exp">Experiments</h2>
+      <p class="section-lead">가설과 판단 기준을 정하고, 실험 결과를 통해 개선 방향을 검토한 사례입니다.</p>
+    </div>
+    <div class="exp">
+      <div class="exp-list">
+        <p class="exp-group">탐색 경험을 개선하기 위한 연속 실험</p>
+        <ol class="exp-chain">
+          <li>
+            <a class="exp-row" href="pay-boosting.html" data-case="1">
+              <span class="exp-num">01</span>
+              <span class="exp-body">
+                <span class="exp-title">페이 영역 트래픽 부스팅</span>
+                <span class="exp-q">결제 영역을 확장하면 탭 이용과 광고 매출이 함께 늘어날까요?</span>
+                <span class="exp-meta"><span class="exp-verdict is-held">출시 보류</span><span class="exp-fig is-neg">광고 매출 −7.2%</span></span>
+              </span>
+              <canvas class="exp-mini" aria-hidden="true"></canvas>
+            </a>
+            <p class="exp-link">탐색 영역을 분리해 다시 검증</p>
+          </li>
+          <li>
+            <a class="exp-row" href="list-exploration.html" data-case="2">
+              <span class="exp-num">02</span>
+              <span class="exp-body">
+                <span class="exp-title">리스트형 탐색 강화</span>
+                <span class="exp-q">서비스의 배치와 순서를 바꾸면 탐색 행동이 달라질까요?</span>
+                <span class="exp-meta"><span class="exp-verdict">B안 채택</span><span class="exp-fig">광고 매출 +24.9%</span></span>
+              </span>
+              <canvas class="exp-mini" aria-hidden="true"></canvas>
+            </a>
+            <p class="exp-link">서비스 클릭 감소를 후속 검증</p>
+          </li>
+          <li>
+            <a class="exp-row" href="grid-list-hybrid.html" data-case="3">
+              <span class="exp-num">03</span>
+              <span class="exp-body">
+                <span class="exp-title">그리드·리스트 혼합 UI</span>
+                <span class="exp-q">주요 서비스를 첫 화면에 유지하면 클릭 감소를 줄일 수 있을까요?</span>
+                <span class="exp-meta"><span class="exp-verdict is-live">진행 중</span><span class="exp-fig is-quiet">중간 결과 분석 중</span></span>
+              </span>
+              <canvas class="exp-mini" aria-hidden="true"></canvas>
+            </a>
+          </li>
+        </ol>
+        <p class="exp-group">각각의 문제를 검증한 실험</p>
+        <ol class="exp-solo">
+          <li>
+            <a class="exp-row" href="wallet-badge.html" data-case="4">
+              <span class="exp-num">04</span>
+              <span class="exp-body">
+                <span class="exp-title">지갑칩 N배지</span>
+                <span class="exp-q">확인할 소식이 있음을 표시하면 지갑 방문이 늘어날까요?</span>
+                <span class="exp-meta"><span class="exp-verdict">정식 적용</span><span class="exp-fig">지갑칩 방문 +48.1%</span></span>
+              </span>
+              <canvas class="exp-mini" aria-hidden="true"></canvas>
+            </a>
+          </li>
+          <li>
+            <a class="exp-row" href="pay-personalization.html" data-case="5">
+              <span class="exp-num">05</span>
+              <span class="exp-body">
+                <span class="exp-title">페이 영역 개인화·넛지</span>
+                <span class="exp-q">가입 상태에 맞는 정보를 보여주면 서비스 이용이 늘어날까요?</span>
+                <span class="exp-meta"><span class="exp-verdict">정식 스펙 반영</span><span class="exp-fig">자산 메뉴 클릭률 약 +49%</span></span>
+              </span>
+              <canvas class="exp-mini" aria-hidden="true"></canvas>
+            </a>
+          </li>
+        </ol>
+      </div>
+      <div class="exp-figure" aria-hidden="true">
+        <div class="exp-figure__sticky">
+          <canvas id="exp-canvas"></canvas>
+          <p class="exp-figure__cap" id="exp-cap"></p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="wrap section" id="systems" aria-labelledby="h-sys">
-    <div class="section-head"><h2 id="h-sys">Systems</h2><p>판단에 필요한 도구가 없으면 직접 만듭니다</p></div>
-    <div class="grid">
-      <a class="card" href="talklint.html">
-        <div class="thumb"><span class="stamp">Case 06</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="검수 시간 227초에서 84초"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="60" font-weight="700" letter-spacing="-2" fill="currentColor">227s → 84s</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">프레임당 검수 시간 · 실측 45건</text></svg></div>
-        <h3>TalkLint — 디자인 시스템 검수 도구</h3>
-        <p class="result">반복되는 디자인 시스템 문의를 도구로 바꿨습니다. 근거를 인용할 수 있을 때만 오류로 표시하고, <b>최종 판단은 디자이너가</b> 합니다.</p>
-      </a>
-      <a class="card" href="data-tools.html">
-        <div class="thumb"><span class="stamp">Tools</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="지표를 직접 조회하는 도구"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="52" font-weight="700" letter-spacing="-2" fill="currentColor">Query → Act</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">디자이너가 직접 쓰는 지표 조회 도구</text></svg></div>
-        <h3>디자이너의 데이터 도구</h3>
-        <p class="result">데이터 분석가와 지표 정의를 맞춰 만든 조회 도구로, 진행 중인 실험의 <b>데이터 오염을 먼저 발견</b>했습니다.</p>
-      </a>
-      <a class="card" href="https://leche.github.io/trend-articles/" target="_blank" rel="noopener">
-        <div class="thumb"><span class="stamp">Live</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="매일 운영 중"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="60" font-weight="700" letter-spacing="-2" fill="currentColor">Daily</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">2026년 3월부터 매일 발행 중</text></svg></div>
-        <h3>트렌드림 — 디자인 트렌드 큐레이션 ↗</h3>
-        <p class="result">매일 아티클을 고르고 요약하는 과정을 자동화하되, <b>발행 전 검수는 사람이</b> 합니다.</p>
-      </a>
+    <div class="section-head">
+      <h2 id="h-sys">Systems</h2>
+      <p class="section-lead">반복해서 확인해야 하는 디자인 규칙과 데이터를 도구로 정리했습니다.</p>
     </div>
+    <ul class="sys">
+      <li><a href="talklint.html">
+        <span class="sys-name">TalkLint</span>
+        <span class="sys-role">디자인 시스템 검수 도구</span>
+        <span class="sys-desc">반복되는 디자인 시스템 검수 작업을 줄이기 위해 만든 Figma 플러그인입니다. 규칙과 가이드의 근거를 확인하고, 최종 적용 여부는 디자이너가 판단합니다.</span>
+        <span class="sys-meta">45건 실측 · 프레임당 검수 227초 → 84초</span>
+      </a></li>
+      <li><a href="data-tools.html">
+        <span class="sys-name">디자이너의 데이터 도구</span>
+        <span class="sys-role">실험 지표 조회·확인 도구</span>
+        <span class="sys-desc">필요한 데이터를 직접 확인할 수 있도록 데이터 분석가와 지표 정의를 맞춰 만든 도구입니다. 진행 중인 실험의 이상 신호를 발견하는 데 활용했습니다.</span>
+        <span class="sys-meta">지표 조회 · 이상 신호 확인</span>
+      </a></li>
+      <li><a href="https://leche.github.io/trend-articles/" target="_blank" rel="noopener">
+        <span class="sys-name">트렌드림</span>
+        <span class="sys-role">디자인 트렌드 큐레이션</span>
+        <span class="sys-desc">매일 디자인 아티클을 찾아 요약하고 발행하는 과정을 자동화했습니다. 발행할 내용은 직접 검수하며 개인 프로젝트로 운영하고 있습니다.</span>
+        <span class="sys-meta">2026.03 — 현재 · 운영 중 ↗</span>
+      </a></li>
+    </ul>
   </section>
 
   <section class="wrap section" id="foundation" aria-labelledby="h-fnd">
-    <div class="section-head"><h2 id="h-fnd">Foundation</h2><p>지금의 방식이 만들어진 이전 작업</p></div>
-    <div class="grid">
-      <a class="card" href="daum-app.html">
-        <div class="thumb"><span class="stamp">Daum App</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="주간 활성 사용자 최대 18% 증가"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="64" font-weight="700" letter-spacing="-2" fill="currentColor">+18%</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">개편 후 주간 활성 사용자 최대 증가폭</text></svg></div>
-        <h3>다음앱 전면 개편</h3>
-        <p class="result">하단 탭부터 화면 진입 흐름까지 앱 전체 구조를 다시 설계하고, 팀에 Figma Variables를 처음 도입했습니다.</p>
-      </a>
-      <a class="card" href="daum-search.html">
-        <div class="thumb"><span class="stamp">Daum Search</span>
-          <svg viewBox="0 0 320 160" role="img" aria-label="인물·장소·방송 검색 통합"><text x="160" y="92" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="60" font-weight="700" letter-spacing="-2" fill="currentColor">3 → 1</text><text x="160" y="126" text-anchor="middle" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="13" fill="#8A8F96">인물·장소·방송 검색을 하나의 구조로</text></svg></div>
-        <h3>다음 통합검색 정답형 개편</h3>
-        <p class="result">따로 운영되던 검색 컬렉션을 하나의 정보 구조로 묶고, 검색 전반에 쓸 공통 UI 기준을 만들었습니다.</p>
-      </a>
+    <div class="section-head">
+      <h2 id="h-fnd">Foundation</h2>
+      <p class="section-lead">검색과 콘텐츠 앱의 구조를 개편하며 쌓아온 경험입니다.</p>
     </div>
+    <ol class="fnd">
+      <li><a href="daum-app.html">
+        <span class="fnd-year">2024 — 2025</span>
+        <span class="fnd-body">
+          <span class="fnd-title">다음앱 전면 개편</span>
+          <span class="fnd-sub">Daum App</span>
+          <span class="fnd-desc">하단 탭과 화면 진입 흐름을 포함해 앱 전체의 정보 구조를 다시 설계했습니다. 디자인 시스템 구축에도 참여했습니다.</span>
+          <span class="fnd-meta">출시 후 주간 활성 사용자 최대 +18% · 복합 요인 반영</span>
+        </span>
+      </a></li>
+      <li><a href="daum-search.html">
+        <span class="fnd-year">2019 — 2020</span>
+        <span class="fnd-body">
+          <span class="fnd-title">다음 통합검색 정답형 개편</span>
+          <span class="fnd-sub">Daum Search</span>
+          <span class="fnd-desc">별도로 운영되던 인물·장소·방송 검색을 하나의 정보 구조로 통합하고, 공통 UI 기준을 마련했습니다.</span>
+          <span class="fnd-meta">Design Lead · 정답형 검색 구조 통합</span>
+        </span>
+      </a></li>
+    </ol>
   </section>
-
 </main>
 
 <footer class="site-footer">
@@ -151,5 +206,6 @@
 </footer>
 <script src="js/hero.js"></script>
 <script src="js/thoughts.js"></script>
+<script src="js/experiments.js"></script>
 </body>
 </html>

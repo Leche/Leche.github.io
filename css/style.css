@@ -57,24 +57,64 @@ img { max-width:100%; display:block; }
 .essay-body p + p { margin-top:1.6em; }
 
 /* sections */
-.section { padding-top:96px; }
-.section-head { display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:28px; padding-bottom:16px; border-bottom:1px solid var(--ink); }
+.section { padding-top:120px; }
+.section-head { margin-bottom:40px; padding-bottom:20px; border-bottom:1px solid var(--ink); display:grid; grid-template-columns:1fr 3fr; gap:48px; align-items:baseline; }
 .section-head h2 { font-size:22px; font-weight:700; letter-spacing:-.02em; }
-.section-head p { color:var(--cap); font-size:13px; font-weight:500; }
-.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:40px 24px; }
-.card { display:grid; gap:12px; align-content:start; min-width:0; }
-.thumb { aspect-ratio:4/3; background:var(--alt); border:1px solid var(--hair); overflow:hidden; position:relative; display:grid; place-items:center; transition:border-color .2s; }
-.thumb svg { width:72%; height:auto; color:var(--ink); }
-.thumb svg text { font-weight:700; }
-.thumb .stamp { position:absolute; left:16px; top:14px; font-size:12px; letter-spacing:.04em; text-transform:uppercase; color:var(--cap); font-weight:600; }
-.card h3 { font-size:17px; font-weight:600; letter-spacing:-.01em; line-height:1.4; }
-.card .result { font-size:14px; color:var(--sub); line-height:1.65; }
-.card .result b { color:var(--ink); font-weight:600; }
-.badge { display:inline-block; font-size:11px; font-weight:600; padding:2px 7px; background:var(--alt); border:1px solid var(--hair); color:var(--sub); vertical-align:2px; margin-left:6px; }
-.badge.held { background:var(--held-bg); border-color:transparent; color:var(--signal-text); }
-.badge.live { background:var(--ink); border-color:var(--ink); color:#fff; }
-a.card:hover .thumb { border-color:var(--ink); }
-a.card:hover h3 { text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px; }
+.section-lead { font-size:16px; color:var(--sub); line-height:1.7; max-width:680px; }
+
+/* Experiments — 7:5 목록 + 선 도식. 01→02→03만 세로선으로 잇는다 */
+.exp { display:grid; grid-template-columns:7fr 5fr; gap:56px; align-items:start; }
+.exp-group { font-size:13px; font-weight:600; color:var(--cap); margin:0 0 8px; }
+.exp-group ~ .exp-group { margin-top:56px; }
+.exp-chain, .exp-solo { list-style:none; }
+.exp-chain { position:relative; }
+/* 세로선: 01 번호 중심에서 03 번호 중심까지 */
+.exp-chain::before { content:''; position:absolute; left:11px; top:var(--rail-top, 36px); height:var(--rail-h, 0); width:1px; background:var(--ink); }
+.exp-row { display:grid; grid-template-columns:48px 1fr; gap:0 8px; padding:24px 0; border-top:1px solid var(--hair); position:relative; }
+.exp-solo li:first-child .exp-row, .exp-chain li:first-child .exp-row { border-top:0; }
+.exp-num { font-size:13px; font-weight:500; color:var(--cap); font-variant-numeric:tabular-nums; padding-top:4px; position:relative; z-index:1; }
+.exp-chain .exp-num { width:23px; height:23px; display:grid; place-items:center; padding:0; margin-top:1px; background:var(--bg); border:1px solid var(--ink); border-radius:50%; font-size:11px; color:var(--ink); }
+.exp-body { display:grid; gap:6px; }
+.exp-title { font-size:20px; font-weight:600; letter-spacing:-.015em; line-height:1.4; }
+.exp-q { font-size:15px; color:var(--sub); line-height:1.7; }
+.exp-meta { margin-top:4px; display:flex; flex-wrap:wrap; gap:6px 14px; font-size:13px; }
+.exp-verdict { font-weight:500; color:var(--ink); }
+.exp-verdict.is-held { color:var(--signal-text); }
+.exp-verdict.is-live::before { content:''; display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--ink); margin-right:6px; vertical-align:1px; }
+.exp-fig { font-weight:600; font-size:14px; color:var(--ink); font-variant-numeric:tabular-nums; }
+.exp-fig.is-neg { color:var(--signal-text); }
+.exp-fig.is-quiet { font-weight:500; color:var(--cap); font-size:13px; }
+.exp-link { margin:0 0 0 48px; padding:2px 0 2px 0; font-size:13px; font-weight:500; color:var(--cap); }
+.exp-link::before { content:'↳ '; }
+.exp-mini { display:none; }
+.exp-row .exp-title { transition:color .2s; }
+.exp-row:hover .exp-title, .exp-row.is-active .exp-title { text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1px; }
+.exp-row:not(.is-active) .exp-q { transition:color .2s; }
+.exp-figure { align-self:stretch; }
+.exp-figure__sticky { position:sticky; top:112px; }
+#exp-canvas { width:100%; height:300px; display:block; }
+.exp-figure__cap { margin-top:12px; font-size:13px; font-weight:500; color:var(--cap); min-height:20px; }
+
+/* Systems — 3열 텍스트 */
+.sys { list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+.sys a { display:grid; gap:8px; padding-top:20px; border-top:1px solid var(--hair); }
+.sys-name { font-size:17px; font-weight:600; letter-spacing:-.01em; }
+.sys-role { font-size:13px; font-weight:500; color:var(--cap); }
+.sys-desc { margin-top:6px; font-size:14px; line-height:1.75; color:var(--sub); }
+.sys-meta { margin-top:4px; font-size:13px; font-weight:500; color:var(--ink); font-variant-numeric:tabular-nums; }
+.sys a:hover .sys-name { text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px; }
+
+/* Foundation — 연도 중심 2행 아카이브 */
+.fnd { list-style:none; }
+.fnd a { display:grid; grid-template-columns:1fr 3fr; gap:48px; padding:28px 0; border-top:1px solid var(--hair); }
+.fnd li:first-child a { border-top:0; padding-top:4px; }
+.fnd-year { font-size:13px; font-weight:500; color:var(--cap); font-variant-numeric:tabular-nums; padding-top:3px; }
+.fnd-body { display:grid; gap:4px; max-width:680px; }
+.fnd-title { font-size:17px; font-weight:600; letter-spacing:-.01em; }
+.fnd-sub { font-size:13px; font-weight:500; color:var(--cap); }
+.fnd-desc { margin-top:8px; font-size:15px; line-height:1.75; color:var(--ink); }
+.fnd-meta { margin-top:4px; font-size:13px; font-weight:500; color:var(--sub); }
+.fnd a:hover .fnd-title { text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px; }
 
 /* about page — 글이 주인공. 왼쪽 레이블 25% · 오른쪽 본문 75%, 본문 읽기 폭 680px */
 .about-page { padding-top:96px; }
@@ -160,7 +200,12 @@ a.card:hover h3 { text-decoration:underline; text-underline-offset:4px; text-dec
   .thoughts-grid { grid-template-columns:1fr; gap:16px; } .thought-list { margin-top:20px; gap:16px; } .thought { font-size:19px; }
   #thoughts-canvas { aspect-ratio:auto; height:38svh; }
   .essay { grid-template-columns:1fr; gap:16px; padding-top:80px; } .essay-label { position:static; } .essay-body p { font-size:16px; line-height:1.9; }
-  .grid { grid-template-columns:1fr; }
+  .section-head { grid-template-columns:1fr; gap:8px; }
+  .exp { grid-template-columns:1fr; } .exp-figure { display:none; }
+  .exp-mini { display:block; grid-column:2; width:100%; max-width:320px; height:120px; margin-top:16px; }
+  .exp-title { font-size:18px; }
+  .sys { grid-template-columns:1fr; gap:0; } .sys li + li a { margin-top:24px; }
+  .fnd a { grid-template-columns:1fr; gap:8px; }
   .spec { grid-template-columns:1fr 1fr; } .role { grid-template-columns:1fr; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
