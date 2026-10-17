@@ -1,4 +1,4 @@
-# Portfolio — Chang-hyub Lee (Leche)
+# Portfolio — Charlie (Chang-hyub Lee)
 
 Senior Product Designer의 포트폴리오 사이트 소스입니다.
 

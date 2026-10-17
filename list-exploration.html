@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>리스트형 탐색 강화 실험 — Charlie</title>
+<meta name="description" content="첫 화면 밖 서비스가 클릭되지 않는 문제를 구조로 다시 정의하고, 리스트형 탐색 실험을 발의해 배치 순서라는 레버를 찾은 과정.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./">Charlie<span>.</span></a>
+    <nav class="nav" aria-label="섹션">
+      <a href="./#experiments" aria-current="page">Experiments</a><a href="./#systems">Systems</a><a href="./#foundation" class="hide-m">Foundation</a><a href="./#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="project">
+    <p class="kicker">Case 02 · KakaoTalk 더보기탭</p>
+    <h1>리스트형 탐색 강화 실험</h1>
+    <p class="lede">더보기탭의 서비스 바로가기는 첫 화면 그리드 밖으로 나가면 거의 눌리지 않았습니다. 이 문제를 사용자를 아래로 끌어내리는 장치가 아니라 구조의 문제로 다시 정의하고, 리스트형 탐색 실험을 직접 발의했습니다. 세 안을 비교해 커머스 가드레일을 지킨 안을 택했고, 클릭을 움직이는 것은 UI 형태보다 서비스의 배치 순서라는 것을 찾았습니다.</p>
+
+    <div class="spec">
+      <div><span>Year</span>2025.11 발의 – 2026.05</div>
+      <div><span>Experiment</span>대조군 + 3안 · 각 2% · 14일</div>
+      <div><span>Role</span>발의 · 실험안 디자인 리드</div>
+      <div><span>Decision</span>B안 채택 · 후속 실험 설계</div>
+    </div>
+
+    <section class="block">
+      <p class="label">Problem</p>
+      <h2>첫 화면 밖으로 나가면 서비스가 클릭되지 않았다</h2>
+      <p>더보기탭에는 결제, 서비스 바로가기, 광고가 한 화면에 함께 있습니다. 사용자의 활동은 대부분 첫 화면에서 끝났고, 광고 아래 영역의 클릭은 매우 낮았습니다. 처음에는 스크롤을 유도하는 버튼과 티저 컴포넌트를 세 차례 설계했지만, 아래 버튼은 광고를, 위 안내는 결제 영역을 가렸습니다. 유도 장치로는 다른 영역을 해치지 않고 문제를 풀 수 없었습니다.</p>
+      <p>같은 시기 배너 영역을 그리드 구조로 바꾸자 첫 번째 배너로 몰리던 클릭이 69%에서 41%로 분산됐습니다. 노출 구조를 바꾸면 클릭이 움직인다는 근거였습니다.</p>
+      <p class="en">Users rarely tapped services below the first screen. Scroll prompts covered the ad or the payment area, so I reframed it as a structural problem — backed by a banner redesign where the share of clicks on the first slot dropped from 69% to 41%.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">Proposal</p>
+      <h2>결론을 기다리지 않고, 탐색 영역만 따로 실험하자고 제안했다</h2>
+      <p>당시 스쿼드는 상단 결제 영역 개편 실험의 결론을 기다리고 있었습니다. 그 결론과 무관하게 탐색 영역만 먼저 검증하는 실험을 발의했고, 스쿼드 리뷰에서 채택됐습니다. 다른 일정으로 두 차례 미뤄진 뒤 2026년 5월에 집행했습니다.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">Hypothesis & Design</p>
+      <h2>그리드를 리스트로 바꾸고, 정렬 규칙만 다른 세 안을 비교했다</h2>
+      <p>더 많은 서비스를 한 화면에 보여주면 탐색이 늘어날 것이라는 가설로, 그리드를 카테고리 리스트로 바꾼 세 안을 설계했습니다. 상단 영역은 모두 같게 두고, 안마다 바뀌는 변수를 하나로 제한했습니다.</p>
+      <ul class="points">
+        <li><b>A · 가나다순</b>모든 서비스를 이름순으로 나열합니다. 특정 서비스에 유리하지 않은 기준선입니다.</li>
+        <li><b>B · 카테고리순</b>쇼핑·생활·콘텐츠처럼 목적별로 묶어 원하는 서비스를 범주로 찾게 합니다.</li>
+        <li><b>C · 광고 위치 격리</b>B와 같되 광고를 리스트 중간으로 옮겨 탐색 흐름과 분리합니다.</li>
+      </ul>
+      <p>실험 전에 판정 기준을 먼저 정했습니다. 탐색 지표가 좋아도 선물하기 구매전환이나 거래액이 의미 있게 떨어지면 채택하지 않기로 PM·데이터 분석가와 합의했습니다.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">Result</p>
+      <h2>탐색이 가장 좋았던 안이 아니라, 가드레일을 지킨 안을 택했다</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>지표 · 대조군 대비</th><th>A · 가나다순</th><th>B · 카테고리순</th><th>C · 광고 격리</th></tr></thead>
+          <tbody>
+            <tr><td>1인당 더보기탭 조회</td><td class="pos">+2.80%</td><td class="pos">+2.38%</td><td class="pos">+1.54%</td></tr>
+            <tr><td>선물하기 구매전환율</td><td class="neg">−1.58%</td><td>+0.26%</td><td>+0.17%</td></tr>
+            <tr><td>선물하기 경유 거래액</td><td class="neg">−38.7%</td><td>−10.3%</td><td>−5.0%</td></tr>
+            <tr><td>광고 매출</td><td>+21.4%</td><td class="pos">+24.9%</td><td>+1.1%</td></tr>
+            <tr><td>서비스 클릭</td><td class="neg">−28%</td><td>−9%</td><td>−9%</td></tr>
+            <tr class="verdict"><td>판정</td><td class="neg">제외</td><td>채택</td><td>병행 검토</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A안은 탐색 지표가 가장 좋았지만 선물하기 구매전환이 통계적으로 유의하게 떨어져 기준을 넘었습니다. B안은 가드레일을 지키면서 광고 매출이 가장 크게 늘었습니다. 다만 모든 안에서 조회는 늘었는데 서비스 클릭은 줄었습니다. 조회가 늘었다고 탐색이 좋아졌다고 보지 않았습니다.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">Finding</p>
+      <h2>클릭을 움직인 것은 UI 형태가 아니라 배치 순서였다</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>서비스</th><th>A안 순위 · 클릭</th><th>B안 순위 · 클릭</th><th>해석</th></tr></thead>
+          <tbody>
+            <tr><td>선물하기</td><td>12위 · <span style="color:var(--signal-text);font-weight:700">−32%</span></td><td>1위 · −11%</td><td>순위가 오르자 하락폭이 3분의 1로</td></tr>
+            <tr><td>받은선물</td><td>10위 · <span style="color:var(--signal-text);font-weight:700">−34%</span></td><td>2위 · +9%</td><td>순위만으로 감소가 증가로</td></tr>
+            <tr><td>멜론티켓</td><td>8위 · +3,947%</td><td>35위 · +144%</td><td>그리드에 없던 서비스는 순위가 낮아도 증가</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>이 경향은 14일 내내 같은 방향이었습니다. 새 화면에 대한 호기심보다 배치의 영향으로 봤습니다. 광고도 마찬가지로, 상단에서 중단으로 옮긴 C안은 광고 클릭률과 매출이 함께 떨어졌습니다.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">Next</p>
+      <h2>위치 효과를 되살리는 후속 실험으로 이어갔다</h2>
+      <p>리스트의 탐색성은 살리고, 매출을 만드는 핵심 서비스는 첫 화면 그리드에 고정하는 혼합안을 설계했습니다. 직접 테스트하던 이 안이 다음 릴리즈의 공식 실험안으로 채택됐고, 2026년 9월부터 진행 중입니다. 과정과 배운 점은 도메인 전체 러닝셰어에서 공유했습니다.</p>
+    </section>
+
+    <section class="block">
+      <p class="label">My Role</p>
+      <h2>실험을 발의하고, 실험안 디자인을 리드했다</h2>
+      <div class="role">
+        <div><h3>리드한 것</h3><ul><li>문제 재정의와 실험 발의</li><li>세 실험안의 UI·가이드·QA</li><li>결과 해석과 후속 실험 설계</li><li>디자인 시스템 영향 관리</li></ul></div>
+        <div><h3>함께 설계한 것</h3><ul><li>버킷·판정 지표 — PM·데이터 분석가</li><li>통계 검정 — 데이터 분석가</li><li>광고 영향 분석 — 광고 인사이트 조직</li></ul></div>
+      </div>
+    </section>
+
+    <nav class="pager" aria-label="다른 프로젝트">
+      <a href="./#experiments"><small>Back</small>전체 프로젝트</a>
+      <a href="./#systems" style="text-align:right"><small>Next</small>Systems</a>
+    </nav>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Charlie (Chang-hyub Lee)</span>
+    <span class="links"><a href="https://www.linkedin.com/in/chang-hyub-lee-55b30063" target="_blank" rel="noopener">LinkedIn ↗</a><span>forevergtr@gmail.com</span></span>
+  </div>
+</footer>
+</body>
+</html>
