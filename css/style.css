@@ -76,27 +76,39 @@ img { max-width:100%; display:block; }
 a.card:hover .thumb { border-color:var(--ink); }
 a.card:hover h3 { text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px; }
 
-/* about page — 왼쪽 라벨 · 오른쪽 본문(홈 에세이와 같은 5:7 배치) */
+/* about page — 글이 주인공. 왼쪽 레이블 25% · 오른쪽 본문 75%, 본문 읽기 폭 680px */
 .about-page { padding-top:96px; }
-.about-head, .about-block { display:grid; grid-template-columns:5fr 7fr; gap:48px; }
-.about-block { margin-top:88px; padding-top:28px; border-top:1px solid var(--hair); }
-.about-label { font-size:13px; font-weight:600; color:var(--cap); }
-.about-head h1 { font-size:clamp(32px,3.6vw,44px); font-weight:700; letter-spacing:-.02em; line-height:1.25; }
-.about-head h1 span { color:var(--cap); font-weight:500; }
-.about-role { margin-top:12px; font-size:16px; color:var(--sub); }
-.career { list-style:none; display:grid; gap:40px; }
-.career > li { display:grid; grid-template-columns:140px 1fr; gap:24px; }
-.career-period { font-size:13px; font-weight:500; color:var(--cap); font-variant-numeric:tabular-nums; padding-top:3px; }
-.career h3 { font-size:17px; font-weight:600; letter-spacing:-.01em; }
-.career-role { margin-top:2px; font-size:14px; color:var(--sub); }
-.career ul { margin-top:14px; list-style:none; display:grid; gap:8px; }
-.career ul li { position:relative; padding-left:14px; font-size:15px; line-height:1.75; color:var(--ink); }
-.career ul li::before { content:''; position:absolute; left:0; top:.8em; width:5px; height:1px; background:var(--cap); }
-.contact { display:grid; gap:14px; font-size:15px; }
-.contact div { display:grid; grid-template-columns:140px 1fr; gap:24px; }
-.contact dt { font-size:13px; font-weight:500; color:var(--cap); padding-top:2px; }
-.contact dd { user-select:all; }
-.contact dd a { user-select:auto; text-decoration:underline; text-underline-offset:4px; text-decoration-color:var(--line); }
+.about-intro, .about-section { display:grid; grid-template-columns:1fr 3fr; gap:48px; }
+.about-label { font-size:13px; font-weight:600; color:var(--cap); letter-spacing:.02em; text-transform:uppercase; }
+.about-intro__body { max-width:680px; }
+.about-intro h1 { font-size:clamp(30px,3.4vw,40px); font-weight:700; letter-spacing:-.02em; line-height:1.3; text-wrap:balance; }
+.about-intro__role { margin-top:8px; font-size:16px; font-weight:500; color:var(--sub); }
+.about-intro__text { margin-top:40px; }
+.about-intro__text p { font-size:18px; line-height:1.8; color:var(--ink); }
+.about-intro__text p + p { margin-top:1.1em; }
+
+.about-section { margin-top:112px; padding-top:28px; border-top:1px solid var(--hair); }
+.about-section__heading { align-self:start; position:sticky; top:96px; }
+.about-section__num { font-size:13px; font-weight:500; color:var(--cap); font-variant-numeric:tabular-nums; }
+.about-section__heading h2 { margin-top:6px; font-size:20px; font-weight:700; letter-spacing:-.015em; }
+.about-section__sub { margin-top:4px; font-size:14px; font-weight:500; color:var(--sub); }
+.about-section__content { max-width:680px; display:grid; gap:64px; }
+.about-essay__title { font-size:20px; font-weight:600; letter-spacing:-.015em; line-height:1.45; text-wrap:balance; }
+.about-essay p { margin-top:14px; font-size:16px; line-height:1.85; color:var(--ink); }
+.about-essay p + p { margin-top:1em; }
+
+.about-experience { list-style:none; }
+.about-experience__item { display:grid; grid-template-columns:150px 1fr; gap:24px; padding:24px 0; border-top:1px solid var(--hair); }
+.about-experience__item:first-child { border-top:0; padding-top:0; }
+.about-experience__period { font-size:13px; font-weight:500; color:var(--cap); font-variant-numeric:tabular-nums; padding-top:3px; }
+.about-experience__company { font-size:17px; font-weight:600; letter-spacing:-.01em; }
+.about-experience__role { margin-top:2px; font-size:14px; color:var(--sub); }
+.about-experience__desc { margin-top:12px; font-size:15px; line-height:1.8; color:var(--ink); }
+
+/* 홈 Story 끝 About 링크 */
+.essay-more { margin-top:32px; font-size:15px; font-weight:600; }
+.essay-more a { border-bottom:1px solid var(--ink); padding-bottom:2px; }
+.essay-more a:hover { color:var(--sub); border-color:var(--sub); }
 
 /* footer */
 .site-footer { margin-top:112px; border-top:1px solid var(--hair); }
@@ -139,8 +151,12 @@ a.card:hover h3 { text-decoration:underline; text-underline-offset:4px; text-dec
   .nav { gap:16px; font-size:13px; } .nav a.hide-m { display:none; }
   .hero .meta { grid-template-columns:1fr 1fr; row-gap:16px; } .hero .hint { display:none; }
   .section { padding-top:64px; }
-  .about-head, .about-block { grid-template-columns:1fr; gap:16px; } .about-block { margin-top:56px; } .about-page { padding-top:56px; }
-  .career > li, .contact div { grid-template-columns:1fr; gap:4px; }
+  .about-page { padding-top:56px; }
+  .about-intro, .about-section { grid-template-columns:1fr; gap:20px; }
+  .about-intro__text { margin-top:28px; } .about-intro__text p { font-size:17px; }
+  .about-section { margin-top:72px; } .about-section__heading { position:static; } .about-section__content { gap:48px; }
+  .about-essay__title { font-size:18px; }
+  .about-experience__item { grid-template-columns:1fr; gap:4px; }
   .thoughts-grid { grid-template-columns:1fr; gap:16px; } .thought-list { margin-top:20px; gap:16px; } .thought { font-size:19px; }
   #thoughts-canvas { aspect-ratio:auto; height:38svh; }
   .essay { grid-template-columns:1fr; gap:16px; padding-top:80px; } .essay-label { position:static; } .essay-body p { font-size:16px; line-height:1.9; }
