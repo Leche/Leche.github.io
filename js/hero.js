@@ -21,10 +21,22 @@
     W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr;
     base = document.createElement('canvas'); base.width = c.width; base.height = c.height;
     const b = base.getContext('2d');
-    const fs = Math.min(W * 0.15, H * 0.3);
+    // 본문(.wrap)의 왼쪽 거터와 콘텐츠 폭에 맞춘다
+    const wrap = c.parentElement.querySelector('.wrap');
+    const cs = getComputedStyle(wrap), rect = wrap.getBoundingClientRect(), cRect = c.getBoundingClientRect();
+    const left = (rect.left - cRect.left) + parseFloat(cs.paddingLeft);
+    const contentW = rect.width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    // 글자 잉크의 양 끝이 좌우 거터선에 정확히 닿도록 크기를 맞춘다(세로 상한 34%)
+    let fs = 200;
+    b.font = `800 ${fs}px "Pretendard Variable", Pretendard, sans-serif`;
+    const m0 = b.measureText(word), ink0 = m0.actualBoundingBoxLeft + m0.actualBoundingBoxRight;
+    fs = Math.min(fs * contentW / ink0, H * 0.34);
     b.font = `800 ${fs * dpr}px "Pretendard Variable", Pretendard, sans-serif`;
-    b.textAlign = 'center'; b.textBaseline = 'middle'; b.fillStyle = '#F5F6F7';
-    b.fillText(word, c.width / 2, c.height * 0.4);
+    b.textAlign = 'left'; b.textBaseline = 'alphabetic'; b.fillStyle = '#F5F6F7';
+    const m = b.measureText(word);
+    const ink = (m.actualBoundingBoxLeft + m.actualBoundingBoxRight) / dpr;
+    const x = (left + (contentW - ink) / 2 + m.actualBoundingBoxLeft / dpr) * dpr;  // 세로 상한에 걸리면 가운데, 아니면 양끝 정렬
+    b.fillText(word, x, c.height * 0.46);
     R = tint(base, '#ff2a1a'); G = tint(base, '#ffe04a'); B = tint(base, '#2a6cff');
   }
   const t0 = performance.now();
