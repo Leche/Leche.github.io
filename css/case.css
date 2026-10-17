@@ -11,14 +11,15 @@
 
 .cs-hero { margin:64px 0 0; }
 .cs-hero img { display:block; width:100%; height:auto; background:#F5F5F5; }
-.cs figcaption { margin-top:12px; font-size:13px; line-height:1.6; color:var(--cap); }
+.cs figcaption { margin-top:12px; font-size:13px; line-height:1.55; color:var(--sub); }
+.cs-cap-m { display:none; }
 
 .cs-sec { max-width:720px; margin-top:112px; }
 .cs-sec--tight { margin-top:56px; }
 .cs-sec h2 { font-size:22px; line-height:1.4; font-weight:700; letter-spacing:-.02em; margin-bottom:20px; }
 .cs-sec p { font-size:18px; line-height:1.85; color:var(--ink); }
 .cs-sec p + p { margin-top:24px; }
-.cs-sec p.cs-note { margin-top:12px; font-size:14px; line-height:1.6; color:var(--cap); }
+.cs-sec p.cs-note { margin-top:12px; font-size:13px; line-height:1.6; color:var(--sub); }
 .cs-sec p.cs-note + p { margin-top:24px; }
 
 .cs-pair { margin-top:56px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
@@ -38,6 +39,8 @@
   .cs-meta { gap:16px 32px; }
   .cs-hero { margin-top:40px; margin-left:calc(-1 * var(--gutter, 20px)); margin-right:calc(-1 * var(--gutter, 20px)); }
   .cs-hero figcaption { padding:0 var(--gutter, 20px); }
+  .cs figcaption { margin-top:10px; line-height:1.6; }
+  .cs-cap-d { display:none; } .cs-cap-m { display:inline; }
   .cs-sec { margin-top:80px; }
   .cs-sec--tight { margin-top:40px; }
   .cs-sec h2 { font-size:20px; }
