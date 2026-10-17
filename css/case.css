@@ -26,6 +26,12 @@
 .cs-pair figure { margin:0; }
 .cs-pair img { display:block; width:100%; height:auto; background:#F5F5F5; }
 
+.cs-trio { margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.cs-trio figure { margin:0; }
+.cs-trio img { display:block; width:100%; height:auto; background:#F5F5F5; }
+.cs-link { border-bottom:1px solid var(--ink); }
+.cs-link:hover { color:var(--sub); border-color:var(--sub); }
+
 .cs-role-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
 .cs-role h3 { font-size:13px; font-weight:500; color:var(--cap); margin-bottom:12px; }
 .cs-role ul { list-style:none; padding:0; margin:0; display:grid; gap:10px; font-size:16px; line-height:1.6; }
@@ -47,6 +53,7 @@
   .cs-sec p { font-size:16px; line-height:1.8; }
   .cs-sec p + p { margin-top:20px; }
   .cs-pair { grid-template-columns:1fr; gap:32px; margin-top:40px; }
+  .cs-trio { grid-template-columns:1fr; gap:32px; margin-top:40px; }
   .cs-role-grid { grid-template-columns:1fr; gap:24px; }
   .cs .pager { margin-top:96px; }
 }
