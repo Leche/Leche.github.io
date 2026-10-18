@@ -6,8 +6,8 @@
 <title>리스트형 탐색 강화 실험 — Charlie</title>
 <meta name="description" content="첫 화면 그리드 밖의 서비스가 거의 눌리지 않는 문제를 구조의 문제로 보고, 그리드를 카테고리 리스트로 바꾼 실험을 발의해 정렬 규칙이 다른 세 안을 비교한 과정.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="css/style.css?v=202610181052">
-<link rel="stylesheet" href="css/case.css?v=202610181052">
+<link rel="stylesheet" href="css/style.css?v=202610181149">
+<link rel="stylesheet" href="css/case.css?v=202610181149">
 </head>
 <body>
 <header class="site-header">
@@ -40,18 +40,45 @@
 
 
 
-    <section class="cs-sec cs-col">
-      <h2>그리드에서 리스트로</h2>
-      <p>더보기탭에는 결제, 서비스 바로가기, 광고가 한 화면에 함께 있습니다. 사용자의 활동은 대부분 첫 화면에서 끝났고, 광고 아래 영역은 거의 눌리지 않았습니다. 처음에는 스크롤을 유도하는 버튼과 안내를 세 차례 설계했지만, 아래쪽 버튼은 광고를, 위쪽 안내는 결제 영역을 가렸습니다.</p>
+    <section class="cs-block">
+      <figure class="cs-fig cs-stage cs-abc-d" style="--cb:6.82%">
+        <img src="img/case02/scroll-pair.webp" width="2240" height="1408" alt="스크롤 유도 시안 두 장. 왼쪽은 하단에 뜨는 플로팅 버튼이 광고 위에 겹치고, 오른쪽은 상단 안내가 결제 영역을 아래로 밀어낸다" loading="lazy">
+        <figcaption style="left:33.66%">하단 플로팅 버튼</figcaption><figcaption style="left:66.34%">상단 스크롤 안내</figcaption>
+      </figure>
+      <div class="cs-abc-m"><figure class="cs-stage" style="--cbm:4.05%"><img src="img/case02/scroll-a-m.webp" width="700" height="988" alt="하단 플로팅 버튼 시안. 버튼이 광고 위에 겹친다" loading="lazy"><figcaption>하단 플로팅 버튼</figcaption></figure><figure class="cs-stage" style="--cbm:4.05%"><img src="img/case02/scroll-d-m.webp" width="700" height="988" alt="상단 스크롤 안내 시안. 안내가 결제 영역을 아래로 밀어낸다" loading="lazy"><figcaption>상단 스크롤 안내</figcaption></figure></div>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">출발점</p>
+        <h2>스크롤을 유도하는 장치는 다른 영역을 가렸습니다</h2>
+      <p>더보기탭에는 결제, 서비스 바로가기, 광고가 한 화면에 함께 있습니다. 사용자의 활동은 대부분 첫 화면에서 끝났고, 광고 아래 영역은 거의 눌리지 않았습니다.</p>
+      <p>처음에는 스크롤을 유도하는 버튼과 안내를 세 차례 설계했습니다. 아래쪽 버튼은 광고를, 위쪽 안내는 결제 영역을 가렸습니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/case02/banner-diagram-m.webp" width="1000" height="840"><img src="img/case02/banner-diagram.webp" width="2240" height="1060" alt="첫 번째 배너에 몰린 클릭 비중이 그리드 전환 전 69%에서 전환 후 41%로 줄어든 막대 도식" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">근거</p>
+        <h2>노출 구조를 바꾸자 클릭이 분산됐습니다</h2>
       <p>같은 시기 배너 영역을 그리드 구조로 바꾸자, 첫 번째 배너에 몰리던 클릭이 69%에서 41%로 분산됐습니다. 유도 장치를 더하기보다 노출 구조를 바꾸는 쪽을 검토하게 된 근거였습니다.</p>
-      <p>첫 화면 그리드에는 서비스 12개가 보이고, 나머지는 옆으로 넘겨야 나타납니다. 서비스를 목록으로 보여주고 카테고리별로 묶는 구조를 검토하는 실험을 발의했습니다. 상단 결제 영역 실험과 별개로 진행할 수 있도록 범위를 탐색 영역으로 좁혔고, 스쿼드 리뷰에서 채택돼 2026년 5월에 집행했습니다.</p>
+      </div>
     </section>
 
-    <section class="cs-sec cs-col">
-      <h2>디자인</h2>
-      <p>B안은 쇼핑, 라이프, 지갑처럼 같은 성격의 서비스를 카테고리로 묶었습니다. 카테고리 이름 아래에 서비스를 한 줄씩 놓고, 이름 오른쪽에 한 줄 설명을 붙였습니다.</p>
+    <section class="cs-block">
+      <figure class="cs-fig cs-stage" style="--cb:9.18%;--cbm:6.48%">
+        <picture><source media="(max-width:820px)" srcset="img/case02/grid-control-m.webp" width="700" height="617"><img src="img/case02/grid-control.webp" width="2240" height="1198" alt="대조군의 첫 화면 서비스 그리드. 아이콘과 이름만 있는 4열 3행 배치와 넘김 표시" loading="lazy"></picture>
+        <figcaption style="left:50%">대조군 · 첫 화면 4×3 그리드</figcaption>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">제안</p>
+        <h2>탐색 영역만 따로 검증하는 실험을 발의했습니다</h2>
+      <p>첫 화면 그리드에는 서비스 12개가 보이고, 나머지는 옆으로 넘겨야 나타납니다. 서비스를 목록으로 보여주고 카테고리별로 묶는 구조를 검토하는 실험을 발의했습니다.</p>
+      <p>상단 결제 영역 실험과 별개로 진행할 수 있도록 범위를 탐색 영역으로 좁혔고, 스쿼드 리뷰에서 채택돼 2026년 5월에 집행했습니다.</p>
+      </div>
     </section>
 
+    <section class="cs-block">
     <figure class="cs-fig cs-stage cs-abc-d" style="--cb:7.22%">
       <img src="img/case02/abc-v5.webp" width="2240" height="1330" alt="세 실험안의 첫 화면을 폰 세 대로 나란히 보여준다. A안은 광고 아래 가나다순 전체 서비스, B안은 광고 아래 쇼핑 카테고리, C안은 쇼핑 카테고리가 광고 위에 있다">
       <figcaption style="left:22.77%">A안 · 가나다순</figcaption><figcaption style="left:50%">B안 · 카테고리순</figcaption><figcaption style="left:77.23%">C안 · 쇼핑을 광고 위로</figcaption>
@@ -61,22 +88,58 @@
       <figure class="cs-stage" style="--cbm:4.24%"><img src="img/case02/abc-m-b-v5.webp" width="700" height="944" alt="B안 첫 화면. 광고 아래 쇼핑 카테고리로 묶인 서비스 리스트"><figcaption>B안 · 카테고리순</figcaption></figure>
       <figure class="cs-stage" style="--cbm:4.24%"><img src="img/case02/abc-m-c-v5.webp" width="700" height="944" alt="C안 첫 화면. 쇼핑 카테고리가 광고 위에 있다"><figcaption>C안 · 쇼핑을 광고 위로</figcaption></figure>
     </div>
-
-    <section class="cs-sec cs-sec--tight cs-col">
-      <p>가나다순으로 정렬한 A안과 카테고리순으로 묶은 B안, 광고 위치를 분리한 C안을 비교했습니다. 탐색 지표가 좋아도 선물하기 구매전환이나 거래액이 의미 있게 떨어지면 채택하지 않는다는 기준을 실험 전에 PM·데이터 분석가와 정했습니다.</p>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">디자인</p>
+        <h2>정렬 규칙만 다른 세 안을 설계했습니다</h2>
+      <p>가나다순으로 정렬한 A안과 카테고리순으로 묶은 B안, 광고 위치를 분리한 C안을 비교했습니다. 상단 영역은 모두 같게 두었습니다.</p>
+      <p>탐색 지표가 좋아도 선물하기 구매전환이나 거래액이 의미 있게 떨어지면 채택하지 않는다는 기준을 실험 전에 PM·데이터 분석가와 정했습니다.</p>
+      </div>
     </section>
 
-    <section class="cs-sec cs-col">
-      <h2>결과에서 드러난 차이</h2>
-      <p>B안의 광고 매출은 대조군보다 24.9% 높았지만, 서비스 클릭은 감소했습니다. 광고 매출의 개선과 서비스 클릭의 감소를 함께 놓고 결과를 살펴봤습니다. A안은 선물하기 구매전환이 통계적으로 유의하게 떨어져 제외했고, B안은 가드레일을 지키면서 광고 매출이 가장 크게 늘어 채택했습니다.</p>
-      <p class="cs-note">B안 · 광고 매출 +24.9%, 서비스 클릭 −9% · 대조군 대비</p>
-      <p>선물하기는 A안에서 12번째, B안에서 맨 위에 놓였고, 대조군 대비 클릭 감소 폭은 32%에서 11%로 줄었습니다. 리스트 형식뿐 아니라 서비스가 놓이는 순서도 결과에 영향을 줄 수 있다는 단서였습니다.</p>
-      <p>B안을 채택한 뒤에도 서비스 클릭 감소는 해결할 과제로 남았습니다.</p>
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/case02/b-cards-m.webp" width="700" height="1090"><img src="img/case02/b-cards.webp" width="2240" height="1212" alt="B안의 카테고리 카드 세 장. 쇼핑, 라이프, 지갑 카테고리 아래 서비스 이름과 한 줄 설명이 놓여 있다" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">디자인 세부</p>
+        <h2>같은 성격의 서비스를 카테고리로 묶었습니다</h2>
+      <p>B안은 쇼핑, 라이프, 지갑처럼 같은 성격의 서비스를 카테고리로 묶었습니다. 카테고리 이름 아래에 서비스를 한 줄씩 놓고, 이름 오른쪽에 한 줄 설명을 붙였습니다.</p>
+      </div>
     </section>
 
-    <section class="cs-sec cs-col">
-      <h2>혼합 구조로 이어진 판단</h2>
-      <p>다음 실험에서는 주요 서비스를 첫 화면의 그리드에 두고, 그 아래에 카테고리 리스트를 이어 붙이는 혼합 구조를 검토했습니다. 리스트에서 드러난 서비스 클릭 감소를 후속 실험의 과제로 이어갔습니다. 이어진 과정은 <a class="cs-link" href="grid-list-hybrid.html">그리드·리스트 혼합 UI 실험</a>에 정리했습니다.</p>
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/case02/result-diagram-m.webp" width="1000" height="992"><img src="img/case02/result-diagram.webp" width="2240" height="1260" alt="B안의 대조군 대비 변화 막대 도식. 광고 매출은 24.9% 높고, 서비스 클릭은 9% 낮다" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">결과</p>
+        <h2>광고 매출은 늘었지만 서비스 클릭은 줄었습니다</h2>
+      <p>세 안 모두 더보기탭 조회는 늘었지만, 서비스 클릭은 줄었습니다. A안은 선물하기 구매전환이 통계적으로 유의하게 떨어져 제외했고, B안은 가드레일을 지키면서 광고 매출이 가장 크게 늘어 채택했습니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/case02/rank-diagram-m.webp" width="1000" height="1120"><img src="img/case02/rank-diagram.webp" width="2240" height="1240" alt="리스트 안 순위와 클릭 변화 기울기 도식. 선물하기는 A안 12위 −32%에서 B안 1위 −11%로, 받은선물은 A안 10위 −34%에서 B안 2위 +9%로 바뀐다" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">발견</p>
+        <h2>서비스가 놓인 순서와 클릭 변화가 함께 움직였습니다</h2>
+      <p>선물하기는 A안에서 12번째, B안에서 맨 위에 놓였고, 클릭 감소 폭은 32%에서 11%로 줄었습니다. 받은선물은 10번째에서 2번째로 올라가자 감소가 증가로 바뀌었습니다.</p>
+      <p>이 경향은 집행 기간 14일 내내 같은 방향이었습니다. 리스트 형식뿐 아니라 서비스가 놓이는 순서도 결과에 영향을 줄 수 있다는 단서였습니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <figure class="cs-fig cs-stage" style="--cb:6.82%;--cbm:4.05%">
+        <picture><source media="(max-width:820px)" srcset="img/case02/next-mixed-m.webp" width="700" height="988"><img src="img/case02/next-mixed.webp" width="2240" height="1408" alt="다음 실험의 혼합 UI 첫 화면. 4열 2행 그리드와 광고 아래로 카테고리 리스트가 이어진다" loading="lazy"></picture>
+        <figcaption style="left:50%">다음 실험 · 그리드와 리스트를 함께</figcaption>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">다음 판단</p>
+        <h2>그리드와 리스트를 함께 쓰는 구조로 이어갔습니다</h2>
+      <p>B안을 채택한 뒤에도 서비스 클릭 감소는 과제로 남았습니다. 다음 실험에서는 주요 서비스를 첫 화면의 그리드에 두고, 그 아래에 카테고리 리스트를 이어 붙이는 혼합 구조를 검토했습니다. 이어진 과정은 <a class="cs-link" href="grid-list-hybrid.html">그리드·리스트 혼합 UI 실험</a>에 정리했습니다.</p>
+      </div>
     </section>
 
     <section class="cs-sec cs-role cs-col">

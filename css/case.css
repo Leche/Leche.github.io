@@ -8,6 +8,7 @@
 
 /* 대표 이미지 → 제목 */
 .cs-hero { margin:0; }
+.cs-fig picture { display:block; }
 .cs-hero img, .cs-fig img { display:block; width:100%; height:auto; background:#F5F5F5; }
 .cs-head { margin-top:72px; }
 .cs-kicker { font-size:13px; font-weight:500; color:var(--cap); letter-spacing:.02em; }
@@ -28,6 +29,15 @@
 .cs-sec p + p { margin-top:20px; }
 .cs-sec p.cs-note { margin-top:12px; font-size:13px; line-height:1.6; color:var(--sub); }
 .cs-sec p.cs-note + p { margin-top:20px; }
+
+
+/* 블록: 이미지 → 라벨 → 한 문장 → 본문 (레퍼런스 문법) */
+.cs-block { margin-top:136px; }
+.cs-head + .cs-block { margin-top:120px; }
+.cs-block > .cs-fig, .cs-block > .cs-abc-m { margin-top:0; }
+.cs-block > .cs-sec { margin-top:48px; }
+.cs-label { font-size:13px; font-weight:500; color:var(--cap); margin-bottom:8px; }
+.cs-block h2 { font-size:22px; line-height:1.45; font-weight:600; letter-spacing:-.015em; margin-bottom:16px; }
 
 /* 본문 사이 이미지 */
 .cs-fig { margin:72px 0 0; }
@@ -75,5 +85,9 @@
   .cs-abc-m img { display:block; width:100%; height:auto; }
   .cs-stage figcaption { bottom:var(--cbm, 16px); font-size:12px; }
   .cs-role-grid { grid-template-columns:1fr; gap:24px; }
+  .cs-block { margin-top:96px; } .cs-head + .cs-block { margin-top:80px; }
+  .cs-block > .cs-sec { margin-top:32px; }
+  .cs-block h2 { font-size:19px; }
+  .cs-block > .cs-fig { margin-left:calc(-1 * var(--gutter, 20px)); margin-right:calc(-1 * var(--gutter, 20px)); }
   .cs .pager { margin-top:96px; }
 }
