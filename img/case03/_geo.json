@@ -1,0 +1,27 @@
+{
+ "start-pair.webp": 6.82,
+ "start-pair.webp:x": [
+  33.66,
+  66.34
+ ],
+ "start-ctrl-m.webp": 4.05,
+ "start-list-m.webp": 4.05,
+ "buckets.webp": 17.71,
+ "buckets.webp:x": [
+  16.25,
+  38.75,
+  61.25,
+  83.75
+ ],
+ "tabbar.webp": 23.93,
+ "tabbar-m.webp": 16.46,
+ "next-trio.webp": 7.16,
+ "next-trio.webp:x": [
+  22.77,
+  50.0,
+  77.23
+ ],
+ "next-recent-m.webp": 4.05,
+ "next-pinned-m.webp": 4.05,
+ "next-category-m.webp": 4.05
+}
