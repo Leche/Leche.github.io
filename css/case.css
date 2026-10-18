@@ -56,6 +56,7 @@
 .cs-abc-m { display:none; }
 
 .cs-link { border-bottom:1px solid var(--ink); }
+.cs-ext { margin-top:32px; font-size:15px; font-weight:500; }
 .cs-link:hover { color:var(--sub); border-color:var(--sub); }
 
 .cs-role-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
