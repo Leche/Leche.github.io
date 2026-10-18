@@ -26,9 +26,16 @@
 .cs-pair figure { margin:0; }
 .cs-pair img { display:block; width:100%; height:auto; background:#F5F5F5; }
 
-.cs-trio { margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.cs-trio figure { margin:0; }
-.cs-trio img { display:block; width:100%; height:auto; background:#F5F5F5; }
+.cs-variants { margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); column-gap:0; }
+.cs-variants figure { margin:0; }
+/* 세 칸의 회색이 맞닿아 한 장의 판처럼 보인다. 시안 사이 간격은 안쪽 여백으로 만든다 */
+.cs-shot { background:#F5F5F5; padding:40px 32px 0; }
+.cs-variants figure:first-child .cs-shot { padding-left:48px; padding-right:16px; }
+.cs-variants figure:last-child .cs-shot { padding-left:16px; padding-right:48px; }
+.cs-shot img { display:block; width:100%; height:auto; }
+.cs-variants figcaption { padding-left:32px; }
+.cs-variants figure:first-child figcaption { padding-left:48px; }
+.cs-variants figure:last-child figcaption { padding-left:16px; }
 .cs-link { border-bottom:1px solid var(--ink); }
 .cs-link:hover { color:var(--sub); border-color:var(--sub); }
 
@@ -53,7 +60,9 @@
   .cs-sec p { font-size:16px; line-height:1.8; }
   .cs-sec p + p { margin-top:20px; }
   .cs-pair { grid-template-columns:1fr; gap:32px; margin-top:40px; }
-  .cs-trio { grid-template-columns:1fr; gap:32px; margin-top:40px; }
+  .cs-variants { grid-template-columns:1fr; row-gap:32px; margin-top:40px; }
+  .cs-shot, .cs-variants figure:first-child .cs-shot, .cs-variants figure:last-child .cs-shot { padding:28px 48px 0; }
+  .cs-variants figcaption, .cs-variants figure:first-child figcaption, .cs-variants figure:last-child figcaption { padding-left:0; }
   .cs-role-grid { grid-template-columns:1fr; gap:24px; }
   .cs .pager { margin-top:96px; }
 }
