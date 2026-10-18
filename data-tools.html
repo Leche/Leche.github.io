@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>디자이너의 데이터 도구 — Charlie</title>
-<meta name="description" content="데이터 분석가와 지표 정의를 맞춰 디자이너가 직접 쓰는 지표 조회 도구를 만들고, 진행 중인 실험의 문제를 먼저 발견한 과정.">
+<meta name="description" content="디자이너가 자연어로 사내 지표를 직접 조회하는 도구를 만들고, 진행 중인 실험의 오염을 먼저 발견하고, 다른 팀과 다른 지표로 넓혀 간 과정.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="css/style.css?v=202610181216">
+<link rel="stylesheet" href="css/case.css?v=202610182030">
 </head>
 <body>
 <header class="site-header">
@@ -19,34 +20,117 @@
 </header>
 
 <main class="wrap">
-  <article class="project">
-    <p class="kicker">Systems</p>
-    <h1>디자이너의 데이터 도구</h1>
-    <p class="lede">실험을 설계하는 사람이 결과를 기다리기만 하면, 판단이 늦어지고 이상을 늦게 발견합니다. 데이터 분석가와 4주에 걸쳐 지표 정의를 맞추고, 디자이너가 자연어로 지표를 직접 조회하는 도구를 만들었습니다. 이 도구로 진행 중인 실험을 관찰하다 데이터 오염을 먼저 발견했고, 주간 지표의 이상 신호를 확인하는 자동화도 실무에 적용했습니다.</p>
+  <article class="cs">
+    <figure class="cs-hero">
+      <picture>
+        <source media="(max-width:820px)" srcset="img/datatools/hero-m.webp?v=202610182100" width="1000" height="678">
+        <img src="img/datatools/hero.webp?v=202610182100" width="2240" height="978" alt="AI 에이전트와의 대화 화면 예시. 더보기탭 지난주 지표를 요약하고 원인도 봐 달라는 질문에, 도구 2개를 사용해 DAU·탭 PV·클릭·CTR-A의 전주 대비 변화와 하락 원인 해석을 답한다. 수치는 예시다">
+      </picture>
+    </figure>
 
-    <div class="spec">
-      <div><span>Year</span>2026</div>
-      <div><span>Type</span>지표 조회 도구 · 자동화</div>
-      <div><span>Role</span>기획·구현</div>
-      <div><span>Status</span>팀 내 사용 중</div>
-    </div>
+    <header class="cs-head cs-col">
+      <h1>디자이너의 데이터 도구</h1>
+      <p class="cs-lede">실험을 설계하는 디자이너가 숫자를 기다리지 않고 직접 묻고 확인할 수 있도록, 자연어로 사내 지표를 조회하는 도구를 만들었습니다. 이 도구로 진행 중인 실험의 오염을 먼저 찾아냈고, 다른 지표와 다른 팀도 쓸 수 있는 구조로 넓혔습니다.</p>
+      <dl class="cs-meta">
+        <div><dt>Year</dt><dd>2026.07 – 진행 중</dd></div>
+        <div><dt>Role</dt><dd>기획 · 구현</dd></div>
+        <div><dt>Area</dt><dd>지표 조회 · 실험 분석 · 자동화</dd></div>
+      </dl>
+    </header>
 
-    <section class="block">
-      <p class="label">Problem</p>
-      <h2>실험을 설계하면서 숫자는 기다려야 했다</h2>
-      <p>지표를 보려면 분석 요청을 하고 결과를 기다려야 했습니다. 실험이 진행되는 동안 무슨 일이 일어나는지 디자이너가 직접 볼 방법이 없었습니다.</p>
+    <section class="cs-sec cs-col">
+      <p class="cs-label">문제 정의</p>
+      <h2>실험을 설계하는 사람이 정작 숫자는 기다려야 했습니다</h2>
+      <p>더보기탭의 지표는 PM이 매주 갱신하는 대시보드로 봅니다. 정해진 항목을 정기적으로 보기에는 충분했지만, 실험이 진행되는 동안 "이 하락은 어디서 나왔지?" 같은 질문이 떠오르면 대시보드에 없는 숫자는 바로 확인할 방법이 없었습니다.</p>
+      <p>사내의 범용 데이터 도구도 대안이 되지 못했습니다. 더보기탭 로그에 닿지 못하거나, 원본 테이블만 보여줘서 같은 이름의 지표를 다른 기준으로 계산하게 두었습니다. 예를 들어 CTR-A는 특정 클릭을 빼고 계산해야 하는데, 그 정의를 모르면 그럴듯하지만 틀린 숫자가 나옵니다.</p>
+      <p>실험을 설계한 사람이 결과를 직접 읽을 수 있어야 판단이 빨라진다고 봤습니다. 필요한 것은 더 많은 대시보드가 아니라, 질문을 던지면 정확한 숫자가 돌아오는 도구였습니다.</p>
     </section>
 
-    <section class="block">
-      <p class="label">Build</p>
-      <h2>지표 정의를 먼저 맞추고, 도구는 그다음에 만들었다</h2>
-      <p>도구보다 정의가 먼저였습니다. 같은 이름의 지표도 집계 기준이 다르면 다른 숫자가 나옵니다. 데이터 분석가와 4주 동안 지표 하나하나의 정의와 실험 분석 방법을 맞췄고, 검증된 지표만 조회할 수 있게 했습니다.</p>
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/datatools/flow-m.webp?v=202610182100" width="1000" height="1510"><img src="img/datatools/flow.webp?v=202610182100" width="2240" height="690" alt="질문에서 숫자까지의 흐름. PD·PM의 자연어 질문을 AI 에이전트가 받아 직접 만든 지표 조회 도구를 거쳐 각자의 권한으로 사내 로그 데이터를 읽기 전용 조회하고, 숫자와 해석, 실행한 SQL이 돌아온다" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">해결 방향</p>
+        <h2>AI 에이전트가 사내 데이터에 직접 닿게 하고, 지표 정의를 도구 안에 넣었습니다</h2>
+        <p>평소 쓰던 AI 에이전트에 사내 로그를 조회하는 도구를 연결했습니다. "지난주 지표 어때?"라고 물으면 에이전트가 SQL을 짜고, 도구가 로그인과 실행, 결과 회수까지 처리해 숫자와 해석을 돌려줍니다. 디자이너는 SQL도, 로그인도, 대기도 직접 하지 않습니다.</p>
+        <p>핵심은 지표 정의를 도구가 알고 있게 한 것입니다. CTR-A에서 무엇을 빼야 하는지, 실험 분석은 어떤 순서로 집계해야 하는지를 도구에 넣어 두어, AI가 틀린 기준으로 숫자를 만들지 않게 했습니다. 로그 설계는 PM과 개발의 영역이므로, 이미 검증된 로그 위에 정의와 분석 방법을 얹는 것까지를 제 범위로 정했습니다.</p>
+        <p>권한은 사람이 지키도록 했습니다. 데이터 권한은 각자 직접 신청하고, 도구는 본인 계정으로 읽기만 합니다. 데이터를 바꾸는 요청은 코드와 권한 두 겹으로 막았습니다.</p>
+      </div>
     </section>
 
-    <section class="block">
-      <p class="label">Impact</p>
-      <h2>진행 중인 실험의 오염을 먼저 발견했다</h2>
-      <p>그리드·리스트 혼합 실험이 진행되는 동안 이 도구로 일별 추이를 직접 집계했습니다. 그러다 iOS 일부 버전에서 실험군의 알림 표시가 빠져 있다는 것을 찾았고, 바로 공유해 핫픽스로 실험을 중단 없이 이어갔습니다. 매주 주요 지표의 이상 신호를 정리하는 자동화도 만들어 실무에 쓰고 있습니다.</p>
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/datatools/match-m.webp?v=202610182100" width="1000" height="1040"><img src="img/datatools/match.webp?v=202610182100" width="2240" height="730" alt="스쿼드 대시보드와 4주치를 대조해 일치한 칸. 영역별 클릭 32칸 중 32칸, 페이 영역 세부 20칸 중 20칸, 서비스별 클릭 40칸 중 40칸. DAU·탭 PV·클릭은 3주 연속 한 자리까지 일치" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">검증</p>
+        <h2>사람이 만든 대시보드를 정답지로 삼아, 숫자가 칸 단위로 맞을 때까지 대조했습니다</h2>
+        <p>숫자를 다루는 도구는 한 번 틀리면 다시 쓰이지 않습니다. 그래서 PM이 손으로 만드는 스쿼드 대시보드를 정답지로 삼아 4주치를 전면 대조했습니다. 영역별 클릭 32칸, 페이 영역 세부 20칸, 서비스별 클릭 40칸이 모두 일치했고, DAU·탭 PV·클릭은 답을 모르는 주차로 다시 돌려도 3주 연속 한 자리까지 맞았습니다.</p>
+        <p>대조하면서 찾은 함정은 도구에 규칙으로 남겼습니다. 아직 적재가 끝나지 않은 오늘 데이터, 하루짜리 급등을 추세로 읽는 오류, 정의가 미묘하게 다른 두 숫자처럼, 사람이 실수하기 쉬운 지점을 AI가 먼저 점검하게 했습니다.</p>
+        <p>이후 실행 엔진을 사내 공용 엔진으로 옮길 때도 같은 방식으로 14개 지표를 원 단위까지 대조한 뒤 전환했습니다. 숫자는 그대로였고, 하루치 조회는 1분 가까이 걸리던 것이 몇 초로 줄었습니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/datatools/dots-m.webp?v=202610182100" width="1000" height="1000"><img src="img/datatools/dots.webp?v=202610182100" width="2240" height="1100" alt="iOS 하단 탭 빨간점이 켜진 비율을 실험군별로 본 하루치 막대. 대조군 98%, B안 97%, D안 98%인데 A안 30%, C안 31%만 크게 낮다" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">실험 관찰</p>
+        <h2>진행 중인 실험을 직접 쪼개 보다가, 결과를 오염시키던 버그를 먼저 찾았습니다</h2>
+        <p><a class="cs-link" href="grid-list-hybrid.html">그리드·리스트 혼합 실험</a>이 시작된 뒤, 이 도구로 매일 실험군별 지표를 직접 집계했습니다. 서비스 클릭의 손실이 어디서 나는지 쪼개 보니, 빨간점이 켜진 클릭에 손실이 몰려 있었습니다.</p>
+        <p>같은 분석을 두 AI 에이전트로 교차 검증하다가 이상한 숫자가 하나 걸렸습니다. iOS에서만, 그것도 두 실험군에서만 하단 탭 빨간점이 켜진 비율이 다른 군의 3분의 1 수준이었습니다. Android는 모든 군이 정상이었습니다. 클라이언트 코드까지 따라가 보니, 실험군 화면에서는 그리드 서비스의 빨간점이 하단 탭 배지에 반영되지 않고 있었습니다. 로그가 아니라 화면이 틀린 것이었습니다.</p>
+        <p>원인과 수정 지점을 정리해 바로 공유했고, 핫픽스가 나간 뒤에는 수정된 버전의 데이터로 잘라 다시 판정하도록 분석 기준을 바꿨습니다. 그대로 두었다면 버그 때문에 생긴 iOS의 손실이 실험안 자체의 문제로 읽혔을 것입니다. 이후 데이터 분석가의 공식 중간 분석과도 같은 결론을 확인했습니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/datatools/layers-m.webp?v=202610182100" width="1000" height="1270"><img src="img/datatools/layers.webp?v=202610182100" width="2240" height="930" alt="지식을 두 층으로 나눈 구조. 위의 공통 계층은 코드가 가지는 정확도를 지키는 방법이고, 아래의 부서 계층은 더보기탭, 톡 설정, 다른 팀의 설정 파일로 갈아 끼운다" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">확장</p>
+        <h2>정확도를 지키는 방법은 코드에 두고, 제품별 정의만 갈아 끼우게 만들었습니다</h2>
+        <p>처음에는 더보기탭 전용이었습니다. 다른 팀도 쓸 수 있게 넓히려고 보니, 지표 정의와 함께 적어 둔 정확도 점검 방법까지 설정 파일을 바꾸는 순간 사라지는 구조였습니다. 그래서 지식을 두 층으로 나눴습니다. 어느 제품에나 통하는 정확도 점검 방법은 코드가 갖고, 제품마다 다른 지표 정의는 설정 파일 하나로 교체합니다.</p>
+        <p>이 구조 덕분에 카카오톡 설정 개편의 지표 기준을 잡을 때도, 로그 체계가 다른 데이터를 같은 도구로 바로 조회할 수 있었습니다. 그 과정에서 사용자 행동처럼 보이지만 실제로는 앱이 새벽에 자동으로 남기는 로그를 찾아냈고, 이를 섞으면 이탈률이 절반 넘게 낮게 계산된다는 것을 확인해 판별 방법을 공통 계층에 추가했습니다.</p>
+        <p>권한 준비부터 설치, 숫자 검증까지 단계별로 안내하는 설치 가이드 페이지도 만들어, 티아라로 지표를 보는 다른 PD·PM이 직접 설치해 쓸 수 있게 공개했습니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-sec cs-col">
+      <p class="cs-label">자동화</p>
+      <h2>매주, 매일 봐야 하는 숫자는 사람이 묻기 전에 정리되게 했습니다</h2>
+      <p>매주 월요일에는 지난주 주요 지표와 이상 신호가 자동으로 정리되고, 평일 아침에는 전날 지표가 개인 업무 대시보드에 채워집니다. 정기적으로 보는 숫자는 기다리지 않고 받아보고, 질문이 생기면 그 자리에서 파고드는 흐름이 됐습니다.</p>
+      <p>일간 지표에는 좋다, 나쁘다는 판정을 붙이지 않았습니다. 공휴일과 요일에 따라 두 자릿수 변동이 흔해서, 판정을 붙이면 오탐만 늘기 때문입니다. 대신 같은 요일 직전 4주의 중앙값과 나란히 보여주어 읽는 사람이 맥락을 판단하게 했습니다.</p>
+    </section>
+
+    <section class="cs-sec cs-col">
+      <p class="cs-label">결과</p>
+      <h2>실험을 설계한 사람이 실험을 직접 읽게 됐습니다</h2>
+      <p>대시보드가 결과를 보여주는 도구라면, 이 도구는 질문을 던지고 답을 얻는 도구입니다. 실험이 진행되는 동안 가설이 떠오르면 그 자리에서 확인하고, 이상 신호가 보이면 OS·버전·사용자 구간으로 바로 쪼개 원인을 좁힐 수 있게 됐습니다.</p>
+      <p>그 결과 실험 결과를 왜곡할 수 있던 버그를 실험 초반에 찾아 바로잡았고, 다른 제품의 개편 과제에도 같은 방식으로 지표 기준을 세웠습니다. 더보기탭에서 시작한 도구가 다른 지표와 다른 팀까지 넓어지고 있습니다.</p>
+    </section>
+
+    <section class="cs-sec cs-col">
+      <p class="cs-label">회고</p>
+      <h2>숫자를 직접 다루기 시작하면서, 디자인 판단의 근거가 달라졌습니다</h2>
+      <p>예전에는 실험 결과를 받아서 해석했다면, 이제는 결과가 만들어지는 과정을 직접 확인합니다. 화면 하나의 변화가 어떤 사용자에게, 어떤 클릭에서 영향을 줬는지까지 볼 수 있게 되면서, 다음 시안의 가설도 더 구체적으로 세울 수 있게 됐습니다.</p>
+      <p>도구를 만들면서 가장 지키려 한 것은 정확도였습니다. AI가 숫자를 대신 뽑아 주는 도구일수록, 그 숫자가 사람이 만든 기준과 맞는다는 증거가 있어야 팀이 믿고 쓸 수 있다고 생각했습니다.</p>
+    </section>
+
+    <section class="cs-sec cs-role cs-col">
+      <h2>역할</h2>
+      <div class="cs-role-grid">
+        <div>
+          <h3>담당한 것</h3>
+          <ul><li>문제 정의와 도구 기획·구현</li><li>지표 정의의 코드화와 대시보드 대조 검증</li><li>진행 중인 실험의 관찰·분해 분석</li><li>공통·제품별 2계층 구조와 설치 가이드</li><li>주간·일간 지표 자동화</li></ul>
+        </div>
+        <div>
+          <h3>함께 한 것</h3>
+          <ul><li>로그 설계와 원천 지표 — PM·개발</li><li>실험의 공식 분석 — 데이터 분석가</li><li>버그 수정과 핫픽스 — iOS 개발</li><li>데이터 권한 — 사용자 각자 신청</li></ul>
+        </div>
+      </div>
     </section>
 
     <nav class="pager" aria-label="다른 프로젝트">
