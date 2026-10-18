@@ -35,6 +35,7 @@
 .cs-block { margin-top:136px; }
 .cs-head + .cs-block { margin-top:120px; }
 .cs-block > .cs-fig, .cs-block > .cs-abc-m { margin-top:0; }
+.cs-block > .cs-fig.cs-fig--after { margin-top:24px; }
 .cs-block > .cs-sec { margin-top:48px; }
 .cs-label { font-size:13px; font-weight:500; color:var(--cap); margin-bottom:8px; }
 .cs-block h2 { font-size:22px; line-height:1.45; font-weight:600; letter-spacing:-.015em; margin-bottom:16px; }
@@ -87,6 +88,7 @@
   .cs-role-grid { grid-template-columns:1fr; gap:24px; }
   .cs-block { margin-top:96px; } .cs-head + .cs-block { margin-top:80px; }
   .cs-block > .cs-sec { margin-top:32px; }
+  .cs-block > .cs-fig.cs-fig--after { margin-top:32px; }
   .cs-block h2 { font-size:19px; }
   .cs-block > .cs-fig { margin-left:calc(-1 * var(--gutter, 20px)); margin-right:calc(-1 * var(--gutter, 20px)); }
   .cs .pager { margin-top:96px; }

@@ -1,13 +1,20 @@
 {
- "scroll-pair.webp": 6.82,
- "scroll-pair.webp:x": [
+ "scroll-pair-v2.webp": 6.82,
+ "scroll-pair-v2.webp:x": [
   33.66,
   66.34
  ],
  "scroll-a-m.webp": 4.05,
- "scroll-d-m.webp": 4.05,
+ "scroll-d-m-v2.webp": 4.05,
  "grid-control.webp": 9.18,
  "next-mixed.webp": 6.82,
  "grid-control-m.webp": 6.48,
- "next-mixed-m.webp": 4.05
+ "next-mixed-m.webp": 4.05,
+ "banner-design.webp": 7.87,
+ "banner-design.webp:x": [
+  29.46,
+  70.54
+ ],
+ "banner-carousel-m.webp": 7.31,
+ "banner-grid-m.webp": 4.34
 }
