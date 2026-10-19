@@ -23,7 +23,7 @@ img { max-width:100%; display:block; }
 .site-header { position:sticky; top:0; z-index:10; height:64px; border-bottom:1px solid var(--hair); background:rgba(255,255,255,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
 .site-header .wrap { height:100%; display:flex; align-items:center; justify-content:center; }
 /* 로고 없이 메뉴 네 개만 가운데(2026-10-19 리체 결정). 이름은 첫 화면 메타와 About에 있다 */
-.nav { display:flex; gap:32px; font-size:14px; font-weight:600; color:var(--cap); }
+.nav { display:flex; gap:32px; font-size:14px; font-weight:600; color:#C2C4C7; }   /* 꺼진 메뉴는 옅게, 켜진 메뉴(ink)와 차이를 크게 */
 .nav a { transition:color .3s ease; }
 .nav a:hover, .nav a[aria-current] { color:var(--ink); }
 
