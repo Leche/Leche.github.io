@@ -24,7 +24,8 @@ img { max-width:100%; display:block; }
 .site-header .wrap { height:100%; display:flex; align-items:center; justify-content:center; }
 /* 로고 없이 메뉴 네 개만 가운데(2026-10-19 리체 결정). 이름은 첫 화면 메타와 About에 있다 */
 .nav { display:flex; gap:32px; font-size:14px; font-weight:600; color:var(--cap); }
-.nav a:hover, .nav a[aria-current="page"] { color:var(--ink); }
+.nav a { transition:color .3s ease; }
+.nav a:hover, .nav a[aria-current] { color:var(--ink); }
 
 /* hero — 라인 정육면체 */
 .hero { position:relative; height:calc(100svh - 64px); min-height:560px; max-height:860px; overflow:hidden; border-bottom:1px solid var(--hair); }
