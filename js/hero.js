@@ -29,9 +29,16 @@
     W = canvas.clientWidth; H = canvas.clientHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     // 메타 줄(하단 약 120px) 위 공간의 가운데에 놓고, 회전해도 그 공간을 넘지 않게 크기를 잡는다
-    const free = H - (W < 820 ? 170 : 150);
-    size = Math.min(W * (W < 820 ? 0.12 : 0.14), free * (W < 820 ? 0.21 : 0.24));   // 모바일은 조금 작게 — 아래 메타 줄(Role 두 줄)과 겹치지 않게
-    cx = W / 2; cy = free * 0.52;
+    if (W < 820) {
+      // 모바일 — 헤더 아래부터 메타 표 위 경계선까지의 공간 정가운데에 놓는다(메타 높이가 Role 두 줄로 달라져도 따라간다)
+      const meta = canvas.parentElement.querySelector('.meta');
+      const free = meta ? meta.getBoundingClientRect().top - canvas.getBoundingClientRect().top : H - 170;
+      size = Math.min(W * 0.13, free * 0.23); cx = W / 2; cy = free / 2;
+    } else {
+      // 데스크톱 — 원래 배치
+      const free = H - 150;
+      size = Math.min(W * 0.14, free * 0.24); cx = W / 2; cy = free * 0.52;
+    }
   }
 
   // 회전 상태

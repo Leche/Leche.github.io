@@ -11,6 +11,7 @@
   const counter = section.querySelector('.thought-count b');
   const dots = [...section.querySelectorAll('.thought-dots i')];
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mq = window.matchMedia('(max-width:820px)'), isMo = () => mq.matches;
   const FONT = '"Pretendard Variable", Pretendard, sans-serif';
 
   let W, H, dpr;
@@ -34,7 +35,7 @@
 
   // ── 장면 1: 두 원 ───────────────────────────────
   function scene1(lp, t) {
-    const cx = W / 2, cy = H * 0.46, R = Math.min(W, H) * 0.22;
+    const cx = W / 2, cy = H * (isMo() ? 0.44 : 0.46), R = Math.min(W, H) * (isMo() ? 0.24 : 0.22);
     const gap = R * (1.7 - 1.05 * ease(lp));           // 중심 간 거리: 멀리 → 겹침
     const L = [cx - gap / 2, cy], Rt = [cx + gap / 2, cy];
     ctx.lineWidth = S(1.5);
@@ -53,13 +54,12 @@
     const dot = (c, a) => { ctx.fillStyle = ink(1); ctx.fillRect(S(c[0] + Math.cos(a) * R) - S(2), S(c[1] + Math.sin(a) * R) - S(2), S(4), S(4)); };
     dot(L, t * 0.8); dot(Rt, t * 0.8 + Math.PI);
     // 라벨은 각 원의 바깥 가장자리에 붙인다(원이 겹쳐도 라벨끼리 만나지 않는다). 폭이 모자라면 두 줄로 떨어뜨린다
-    ctx.font = `500 ${S(13)}px ${FONT}`; ctx.fillStyle = ink(0.5);
-    const tl = '사용자가 하려는 일', tr = '제품이 이루려는 것';
-    const wl = ctx.measureText(tl).width / dpr, wr = ctx.measureText(tr).width / dpr;
-    const xl = L[0] - R, xr = Rt[0] + R, two = (xl + wl + 12 > xr - wr);
-    const y1 = cy + R + 32, y2 = two ? y1 + 20 : y1;
+    const tl = '사용자가 하려는 일', tr = '제품이 이루려는 것', xl = L[0] - R, xr = Rt[0] + R;
+    let fs = 13, wl, wr;
+    do { ctx.font = `500 ${S(fs)}px ${FONT}`; wl = ctx.measureText(tl).width / dpr; wr = ctx.measureText(tr).width / dpr; } while (xl + wl + 14 > xr - wr && --fs > 10);
+    ctx.fillStyle = ink(0.5); const y1 = cy + R + 32;
     ctx.textAlign = 'left'; ctx.fillText(tl, S(xl), S(y1));
-    ctx.textAlign = 'right'; ctx.fillText(tr, S(xr), S(y2));
+    ctx.textAlign = 'right'; ctx.fillText(tr, S(xr), S(y1));
   }
 
   // ── 장면 2: 흩어진 사각형 → 4×3 격자 ─────────────
@@ -119,22 +119,48 @@
   }
 
   const SCENES = [scene1, scene2, scene3];
-  let active = -1, fade = 1, last = performance.now();
+  let active = -1, fade = 1, last = performance.now(), ps = -1;
   const t0 = performance.now();
+  const smooth = u => u <= 0 ? 0 : u >= 1 ? 1 : u * u * u * (u * (u * 6 - 15) + 10);   // smootherstep — 시작·끝이 아주 완만하다
+  // 모바일 한 장면(구간 길이 1)의 나타남 정도: 들어옴 0~0.22, 머묾, 나감 0.78~1. 첫 장면은 처음부터 보이고 마지막 장면은 나가지 않는다
+  const env = (i, u) => {
+    const a = i === 0 ? 1 : smooth(u / 0.22), b = i === 2 ? 1 : smooth((1 - u) / 0.22);
+    return { e: Math.min(a, b), dir: u < 0.5 ? 1 : -1 };
+  };
+  function setActive(idx) {
+    if (idx === active) return; active = idx;
+    if (!isMo()) items.forEach((el, i) => el.classList.toggle('on', i === idx));
+    dots.forEach((el, i) => el.classList.toggle('on', i === idx));
+    if (counter) counter.textContent = String(idx + 1).padStart(2, '0');
+  }
   function frame(now) {
-    const dt = Math.min(0.05, (now - last) / 1000); last = now;
-    const p = progress(), idx = Math.min(2, Math.floor(p)), lp = clamp(p - idx, 0, 1);
-    if (idx !== active) {
-      active = idx; fade = 0;
-      // 모바일에선 지난 문장에 out을 붙여 위로 밀려 나가게 한다(CSS)
-      items.forEach((el, i) => { el.classList.toggle('on', i === idx); el.classList.toggle('out', i < idx); });
-      dots.forEach((el, i) => el.classList.toggle('on', i === idx));
-      if (counter) counter.textContent = String(idx + 1).padStart(2, '0');
-    }
-    fade = Math.min(1, fade + dt * 3);
+    const dt = Math.min(0.05, (now - last) / 1000); last = now; const t = (now - t0) / 1000;
+    const p = progress();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = ease(fade);
-    SCENES[idx](reduce ? 1 : lp, (now - t0) / 1000);
+    if (!isMo()) {
+      // 데스크톱 — 기존 연출 그대로
+      items.forEach(el => { el.style.opacity = ''; el.style.transform = ''; });
+      const idx = Math.min(2, Math.floor(p)), lp = clamp(p - idx, 0, 1);
+      if (idx !== active) fade = 0;
+      setActive(idx);
+      fade = Math.min(1, fade + dt * 3);
+      ctx.globalAlpha = ease(fade);
+      SCENES[idx](reduce ? 1 : lp, t);
+    } else {
+      // 모바일 — 스크롤 위치에 직접 묶고(스크럽), 관성 보정으로 손가락보다 살짝 늦게 부드럽게 따라온다
+      ps = ps < 0 || reduce ? p : ps + (p - ps) * (1 - Math.exp(-dt * 5));
+      const idx = Math.min(2, Math.floor(ps)), u = clamp(ps - idx, 0, 1);
+      setActive(idx);
+      items.forEach((el, i) => {
+        if (i !== idx) { el.style.opacity = 0; return; }
+        const { e, dir } = env(i, u);
+        el.style.opacity = e.toFixed(3); el.style.transform = `translate3d(0, ${((1 - e) * 36 * dir).toFixed(2)}px, 0)`;
+      });
+      const { e } = env(idx, u);
+      ctx.globalAlpha = e;
+      // 장면 안의 움직임은 머무는 구간(0.18~0.78)에 펼쳐져, 문장을 읽는 동안 도식이 천천히 완성된다
+      SCENES[idx](reduce ? 1 : clamp((u - 0.18) / 0.6, 0, 1), t);
+    }
     ctx.globalAlpha = 1;
     requestAnimationFrame(frame);
   }
