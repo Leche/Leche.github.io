@@ -59,7 +59,8 @@
     ctx.font = `500 ${S(13)}px ${FONT}`;
     const wl = ctx.measureText(tl).width / dpr, wr = ctx.measureText(tr).width / dpr;
     const lgEnd = Math.max(g0 * 0.6, (wl + wr) / 2 + 14);      // 끝 상태의 라벨 중심 간 거리
-    const lg = g0 + (lgEnd - g0) * k1;
+    // PC는 넓어서 라벨이 각 원 중심 아래에 붙어 원과 같이 움직인다. 모바일만 다른 비율로 덜 다가온다
+    const lg = isMo() ? g0 + (lgEnd - g0) * k1 : Math.max(gap, (wl + wr) / 2 + 14);
     ctx.fillStyle = ink(0.5); ctx.textAlign = 'center'; const y1 = cy + R + 32;
     ctx.fillText(tl, S(cx - lg / 2), S(y1)); ctx.fillText(tr, S(cx + lg / 2), S(y1));
   }
