@@ -29,8 +29,8 @@
     W = canvas.clientWidth; H = canvas.clientHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     // 메타 줄(하단 약 120px) 위 공간의 가운데에 놓고, 회전해도 그 공간을 넘지 않게 크기를 잡는다
-    const free = H - 150;
-    size = Math.min(W * 0.14, free * 0.24);
+    const free = H - (W < 820 ? 170 : 150);
+    size = Math.min(W * (W < 820 ? 0.12 : 0.14), free * (W < 820 ? 0.21 : 0.24));   // 모바일은 조금 작게 — 아래 메타 줄(Role 두 줄)과 겹치지 않게
     cx = W / 2; cy = free * 0.52;
   }
 

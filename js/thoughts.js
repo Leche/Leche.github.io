@@ -9,6 +9,7 @@
   const ctx = canvas.getContext('2d');
   const items = [...section.querySelectorAll('.thought')];
   const counter = section.querySelector('.thought-count b');
+  const dots = [...section.querySelectorAll('.thought-dots i')];
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const FONT = '"Pretendard Variable", Pretendard, sans-serif';
 
@@ -48,12 +49,17 @@
     }
     ctx.strokeStyle = ink(1); ctx.lineWidth = S(1.5);
     for (const c of [L, Rt]) { ctx.beginPath(); ctx.arc(S(c[0]), S(c[1]), S(R), 0, Math.PI * 2); ctx.stroke(); }
-    // 원 위를 도는 점
-    const dot = (c, a) => { ctx.fillStyle = ink(1); ctx.fillRect(S(c[0] + Math.cos(a) * R) - S(3), S(c[1] + Math.sin(a) * R) - S(3), S(6), S(6)); };
-    dot(L, t * 0.8); dot(Rt, -t * 0.8 + Math.PI);
-    ctx.font = `500 ${S(13)}px ${FONT}`; ctx.fillStyle = ink(0.5); ctx.textAlign = 'center';
-    ctx.fillText('사용자가 하려는 일', S(L[0] - R * 0.35), S(cy + R + 32));
-    ctx.fillText('제품이 이루려는 것', S(Rt[0] + R * 0.35), S(cy + R + 32));
+    // 원 위를 도는 점 — 같은 방향·반 바퀴 차이로 돌아 서로 스치지 않는다
+    const dot = (c, a) => { ctx.fillStyle = ink(1); ctx.fillRect(S(c[0] + Math.cos(a) * R) - S(2), S(c[1] + Math.sin(a) * R) - S(2), S(4), S(4)); };
+    dot(L, t * 0.8); dot(Rt, t * 0.8 + Math.PI);
+    // 라벨은 각 원의 바깥 가장자리에 붙인다(원이 겹쳐도 라벨끼리 만나지 않는다). 폭이 모자라면 두 줄로 떨어뜨린다
+    ctx.font = `500 ${S(13)}px ${FONT}`; ctx.fillStyle = ink(0.5);
+    const tl = '사용자가 하려는 일', tr = '제품이 이루려는 것';
+    const wl = ctx.measureText(tl).width / dpr, wr = ctx.measureText(tr).width / dpr;
+    const xl = L[0] - R, xr = Rt[0] + R, two = (xl + wl + 12 > xr - wr);
+    const y1 = cy + R + 32, y2 = two ? y1 + 20 : y1;
+    ctx.textAlign = 'left'; ctx.fillText(tl, S(xl), S(y1));
+    ctx.textAlign = 'right'; ctx.fillText(tr, S(xr), S(y2));
   }
 
   // ── 장면 2: 흩어진 사각형 → 4×3 격자 ─────────────
@@ -120,7 +126,9 @@
     const p = progress(), idx = Math.min(2, Math.floor(p)), lp = clamp(p - idx, 0, 1);
     if (idx !== active) {
       active = idx; fade = 0;
-      items.forEach((el, i) => el.classList.toggle('on', i === idx));
+      // 모바일에선 지난 문장에 out을 붙여 위로 밀려 나가게 한다(CSS)
+      items.forEach((el, i) => { el.classList.toggle('on', i === idx); el.classList.toggle('out', i < idx); });
+      dots.forEach((el, i) => el.classList.toggle('on', i === idx));
       if (counter) counter.textContent = String(idx + 1).padStart(2, '0');
     }
     fade = Math.min(1, fade + dt * 3);
