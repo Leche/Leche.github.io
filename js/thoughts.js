@@ -9,7 +9,7 @@
   const ctx = canvas.getContext('2d');
   const items = [...section.querySelectorAll('.thought')];
   const counter = section.querySelector('.thought-count b');
-  const dots = [...section.querySelectorAll('.thought-dots i')];
+  const dots = [];
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const mq = window.matchMedia('(max-width:820px)'), isMo = () => mq.matches;
   const FONT = '"Pretendard Variable", Pretendard, sans-serif';
@@ -54,12 +54,14 @@
     const dot = (c, a) => { ctx.fillStyle = ink(1); ctx.fillRect(S(c[0] + Math.cos(a) * R) - S(2), S(c[1] + Math.sin(a) * R) - S(2), S(4), S(4)); };
     dot(L, t * 0.8); dot(Rt, t * 0.8 + Math.PI);
     // 라벨은 각 원의 바깥 가장자리에 붙인다(원이 겹쳐도 라벨끼리 만나지 않는다). 폭이 모자라면 두 줄로 떨어뜨린다
-    const tl = '사용자가 하려는 일', tr = '제품이 이루려는 것', xl = L[0] - R, xr = Rt[0] + R;
-    let fs = 13, wl, wr;
-    do { ctx.font = `500 ${S(fs)}px ${FONT}`; wl = ctx.measureText(tl).width / dpr; wr = ctx.measureText(tr).width / dpr; } while (xl + wl + 14 > xr - wr && --fs > 10);
-    ctx.fillStyle = ink(0.5); const y1 = cy + R + 32;
-    ctx.textAlign = 'left'; ctx.fillText(tl, S(xl), S(y1));
-    ctx.textAlign = 'right'; ctx.fillText(tr, S(xr), S(y1));
+    // 라벨은 원과 다른 비율로 움직인다. 떨어져 있을 땐 각 원 아래 가운데, 원이 다 겹쳐도 라벨끼리는 최소 간격(14px)을 지킨다
+    const tl = '사용자가 하려는 일', tr = '제품이 이루려는 것', g0 = R * 1.7, k1 = ease(lp);
+    ctx.font = `500 ${S(13)}px ${FONT}`;
+    const wl = ctx.measureText(tl).width / dpr, wr = ctx.measureText(tr).width / dpr;
+    const lgEnd = Math.max(g0 * 0.6, (wl + wr) / 2 + 14);      // 끝 상태의 라벨 중심 간 거리
+    const lg = g0 + (lgEnd - g0) * k1;
+    ctx.fillStyle = ink(0.5); ctx.textAlign = 'center'; const y1 = cy + R + 32;
+    ctx.fillText(tl, S(cx - lg / 2), S(y1)); ctx.fillText(tr, S(cx + lg / 2), S(y1));
   }
 
   // ── 장면 2: 흩어진 사각형 → 4×3 격자 ─────────────

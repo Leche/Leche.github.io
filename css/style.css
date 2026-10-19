@@ -44,7 +44,6 @@ img { max-width:100%; display:block; }
 .thoughts-label { font-size:13px; font-weight:600; color:var(--cap); }
 .thought-count { margin-top:8px; font-size:13px; font-weight:500; color:var(--cap); font-variant-numeric:tabular-nums; }
 .thought-count b { color:var(--ink); font-weight:600; }
-.thought-dots { display:none; }
 .thought-list { list-style:none; margin-top:36px; display:grid; gap:28px; }
 .thought { font-size:clamp(20px,2vw,26px); font-weight:600; letter-spacing:-.02em; line-height:1.45; color:#D0D2D5; transition:color .5s ease; text-wrap:balance; }
 .thought.on { color:var(--ink); }
@@ -204,10 +203,8 @@ img { max-width:100%; display:block; }
   .thoughts-stage { min-height:0; align-items:stretch; padding:24px 0 12px; }
   .thoughts-grid { display:flex; flex-direction:column; align-items:stretch; height:100%; gap:8px; }
   .thoughts-text { width:100%; }
-  .thought-dots { display:inline-flex; gap:6px; margin-left:10px; vertical-align:middle; }
-  .thought-dots i { width:6px; height:6px; background:var(--line); transition:background .3s ease; } .thought-dots i.on { background:var(--ink); }
-  .thought-list { position:relative; margin-top:16px; height:6.2em; gap:0; display:block; }
-  .thought { position:absolute; left:0; right:0; top:0; font-size:21px; line-height:1.4; color:var(--ink); opacity:0; transition:none; will-change:opacity, transform; pointer-events:none; }
+  .thought-list { position:relative; margin-top:12px; padding-top:44px; height:calc(6.2em + 44px); gap:0; display:block; overflow:hidden; }
+  .thought { position:absolute; left:0; right:0; top:44px; font-size:21px; line-height:1.4; color:var(--ink); opacity:0; transition:none; will-change:opacity, transform; pointer-events:none; }
   #thoughts-canvas { flex:1 1 auto; height:auto; min-height:0; aspect-ratio:auto; max-height:none; }
   .essay { grid-template-columns:1fr; gap:16px; padding-top:80px; } .essay-label { position:static; } .essay-body p { font-size:16px; line-height:1.9; }
   .section-head { grid-template-columns:1fr; gap:8px; }
