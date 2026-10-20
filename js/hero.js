@@ -33,7 +33,7 @@
       // 모바일 — 헤더 아래부터 메타 표 위 경계선까지의 공간 정가운데에 놓는다(메타 높이가 Role 두 줄로 달라져도 따라간다)
       const meta = canvas.parentElement.querySelector('.meta');
       const free = meta ? meta.getBoundingClientRect().top - canvas.getBoundingClientRect().top : H - 170;
-      size = Math.min(W * 0.13, free * 0.23); cx = W / 2; cy = free / 2;
+      size = Math.min(W * 0.13, free * 0.23); cx = W / 2; cy = free / 2 - size * 0.2;
     } else {
       // 데스크톱 — 헤더 아래부터 안내 문구(드래그해서 돌려보세요) 위까지의 공간 정가운데. 화면이 커져도 위아래 여백이 같다
       const lim = canvas.parentElement.querySelector('.hint') || canvas.parentElement.querySelector('.meta');

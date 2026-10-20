@@ -191,7 +191,7 @@ img { max-width:100%; display:block; }
 @media (max-width:820px) {
   :root { --gutter:20px; }
   .nav { gap:20px; font-size:13px; }
-  .hero { height:70svh; min-height:460px; max-height:none; } .hero .wrap { padding-bottom:28px; } .hero .meta-note { display:block; }
+  .hero { height:calc(100svh - 64px); min-height:460px; max-height:none; }   /* PC와 같이 첫 화면에 꼭 맞게 — svh라 사파리 하단 주소창이 펴져 있어도 인적 사항이 가려지지 않는다 */ .hero .wrap { padding-bottom:28px; } .hero .meta-note { display:block; }
   .hero .meta { grid-template-columns:1fr 1fr; row-gap:16px; } .hero .hint { display:none; }
   .section { padding-top:64px; }
   .about-page { padding-top:56px; }
