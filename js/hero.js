@@ -38,7 +38,7 @@
       // 데스크톱 — 헤더 아래부터 안내 문구(드래그해서 돌려보세요) 위까지의 공간 정가운데. 화면이 커져도 위아래 여백이 같다
       const lim = canvas.parentElement.querySelector('.hint') || canvas.parentElement.querySelector('.meta');
       const free = lim ? lim.getBoundingClientRect().top - canvas.getBoundingClientRect().top : H - 150;
-      size = Math.min(W * 0.14, free * 0.24); cx = W / 2; cy = free / 2 - size * 0.20;   // 기울어진 정육면체는 그림 중심이 아래로 쏠려 위로 보정
+      size = Math.min(W * 0.14, free * 0.24, 190); cx = W / 2; cy = free / 2 - size * 0.20;   // 최대 190 — 큰 모니터에서 과하게 커지지 않게   // 기울어진 정육면체는 그림 중심이 아래로 쏠려 위로 보정
     }
   }
 
