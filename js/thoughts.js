@@ -122,7 +122,7 @@
   }
 
   const SCENES = [scene1, scene2, scene3];
-  let active = -1, fade = 1, last = performance.now(), ps = -1, pt = -1;
+  let active = -1, fade = 1, last = performance.now(), ps = -1, pt = -1, pe = -1, pet = -1;
   const t0 = performance.now();
   const smooth = u => u <= 0 ? 0 : u >= 1 ? 1 : u * u * u * (u * (u * 6 - 15) + 10);   // smootherstep — 시작·끝이 아주 완만하다
   // 모바일 한 장면(구간 길이 1)의 나타남 정도: 들어옴 0~0.22, 머묾, 나감 0.78~1. 첫 장면은 처음부터 보이고 마지막 장면은 나가지 않는다
@@ -156,15 +156,20 @@
       setActive(idx);
       // 문장은 도식보다 한 번 더 늦게 따라온다 — 스크롤을 멈춘 뒤에도 천천히 자리를 찾아간다
       pt = pt < 0 || reduce ? ps : pt + (ps - pt) * (1 - Math.exp(-dt * 2.2));
+      // 첫 장면은 섹션이 올라오는 동안 스크롤에 맞춰 나타난다(이미 켜진 채로 올라오지 않게)
+      const rt = section.getBoundingClientRect().top, vh = window.innerHeight;
+      const raw = clamp(1 - (rt - 64) / ((vh - 64) * 0.55), 0, 1);
+      pe = pe < 0 || reduce ? raw : pe + (raw - pe) * (1 - Math.exp(-dt * 5));
+      pet = pet < 0 || reduce ? pe : pet + (pe - pet) * (1 - Math.exp(-dt * 2.2));
       const ti = Math.min(2, Math.floor(pt)), tu = clamp(pt - ti, 0, 1);
       items.forEach((el, i) => {
         if (i !== ti) { el.style.opacity = 0; return; }
-        const a = i === 0 ? 1 : smooth(tu / 0.3), b = i === 2 ? 1 : smooth((1 - tu) / 0.3);
+        const a = i === 0 ? smooth(pet) : smooth(tu / 0.3), b = i === 2 ? 1 : smooth((1 - tu) / 0.3);
         const e = Math.min(a, b), dir = tu < 0.5 ? 1 : -1;
         el.style.opacity = e.toFixed(3); el.style.transform = `translate3d(0, ${((1 - e) * 36 * dir).toFixed(2)}px, 0)`;
       });
       const { e } = env(idx, u);
-      ctx.globalAlpha = e;
+      ctx.globalAlpha = idx === 0 ? Math.min(e, smooth(pe)) : e;
       // 장면 안의 움직임은 머무는 구간(0.18~0.78)에 펼쳐져, 문장을 읽는 동안 도식이 천천히 완성된다
       SCENES[idx](reduce ? 1 : clamp((u - 0.18) / 0.6, 0, 1), t);
     }
