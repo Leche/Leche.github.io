@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>리스트형 탐색 강화 실험 — Charlie</title>
-<meta name="description" content="첫 화면 그리드 밖의 서비스가 거의 눌리지 않는 문제를 구조의 문제로 보고, 그리드를 카테고리 리스트로 바꾼 실험을 발의해 정렬 규칙이 다른 세 안을 비교한 과정.">
+<title>그리드·리스트 탐색 구조 실험 — Charlie</title>
+<meta name="description" content="첫 화면 그리드 밖의 서비스가 거의 눌리지 않는 문제를 구조의 문제로 보고, 리스트형 실험을 발의한 뒤 그리드와 리스트의 역할을 나눈 2차 실험까지 이어간 과정.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="css/style.css?v=202610201700">
 <link rel="stylesheet" href="css/case.css?v=202610182200">
@@ -28,12 +28,12 @@
     </figure>
 
     <header class="cs-head cs-col">
-      <h1>리스트형 탐색 강화 실험</h1>
-      <p class="cs-lede">더보기탭의 서비스 탐색 영역을 그리드에서 리스트로 바꾸는 실험을 진행했습니다. 카테고리순 리스트인 B안을 채택했지만, 서비스 클릭 감소는 다음 실험에서 풀어야 할 과제로 남았습니다.</p>
+      <h1>그리드·리스트 탐색 구조 실험</h1>
+      <p class="cs-lede">더보기탭의 서비스 바로가기 구조를 두 번의 실험으로 다시 설계했습니다. 1차에서는 그리드를 카테고리 리스트로 바꿔 광고 매출을 늘렸지만 서비스 클릭이 줄었습니다. 2차에서는 첫 화면 그리드와 리스트의 역할을 나눠, 가드레일을 지키면서 첫 화면 밖 서비스까지 찾아 들어가는 이용을 늘렸습니다.</p>
       <dl class="cs-meta">
-        <div><dt>Year</dt><dd>2025.11 발의 – 2026.05</dd></div>
+        <div><dt>Year</dt><dd>2025.11 발의 – 2026.10</dd></div>
         <div><dt>Role</dt><dd>실험 발의 · 실험안 디자인 리드</dd></div>
-        <div><dt>Status</dt><dd>B안 채택 · 혼합 UI 실험으로 연결</dd></div>
+        <div><dt>Status</dt><dd>2차 실험 종료 · 후속 디자인 진행 중</dd></div>
       </dl>
     </header>
 
@@ -93,7 +93,7 @@
       <figure class="cs-stage" style="--cbm:4.05%"><img src="img/case02/abc-m-c-v5.webp?v=tb1" width="700" height="987" alt="C안 첫 화면. 쇼핑 카테고리가 광고 위에 있다"><figcaption>C안 · 쇼핑을 광고 위로</figcaption></figure>
     </div>
       <div class="cs-sec cs-col">
-        <p class="cs-label">디자인</p>
+        <p class="cs-label">1차 실험 - 디자인</p>
         <h2>정렬 규칙만 다른 세 안을 설계했습니다</h2>
       <p>가나다순으로 정렬한 A안과 카테고리순으로 묶은 B안, 광고 위치를 분리한 C안을 비교했습니다. 상단 영역은 모두 같게 두었습니다.</p>
       <p>탐색 지표가 좋아도 선물하기 구매전환이나 거래액이 의미 있게 떨어지면 채택하지 않는다는 기준을 실험 전에 PM·데이터 분석가와 정했습니다.</p>
@@ -105,7 +105,7 @@
         <picture><source media="(max-width:820px)" srcset="img/case02/b-cards-m.webp" width="700" height="1090"><img src="img/case02/b-cards.webp" width="2240" height="1212" alt="B안의 카테고리 카드 세 장. 쇼핑, 라이프, 지갑 카테고리 아래 서비스 이름과 한 줄 설명이 놓여 있다" loading="lazy"></picture>
       </figure>
       <div class="cs-sec cs-col">
-        <p class="cs-label">디자인 세부</p>
+        <p class="cs-label">1차 실험 - 디자인 세부</p>
         <h2>같은 성격의 서비스를 카테고리로 묶었습니다</h2>
       <p>B안은 쇼핑, 라이프, 지갑처럼 같은 성격의 서비스를 카테고리로 묶었습니다. 카테고리 이름 아래에 서비스를 한 줄씩 놓고, 이름 오른쪽에 한 줄 설명을 붙였습니다.</p>
       </div>
@@ -116,7 +116,7 @@
         <picture><source media="(max-width:820px)" srcset="img/case02/result-diagram-m.webp?v=202610190600" width="1000" height="1047"><img src="img/case02/result-diagram.webp?v=202610190600" width="2240" height="1352" alt="B안의 대조군 대비 변화 막대 도식. 광고 매출은 24.9% 높고, 서비스 클릭은 9% 낮다" loading="lazy"></picture>
       </figure>
       <div class="cs-sec cs-col">
-        <p class="cs-label">결과</p>
+        <p class="cs-label">1차 실험 - 결과</p>
         <h2>광고 매출은 늘었지만 서비스 클릭은 줄었습니다</h2>
       <p>세 안 모두 더보기탭 조회는 늘었지만, 서비스 클릭은 줄었습니다. A안은 선물하기 구매전환이 통계적으로 유의하게 떨어져 제외했고, B안은 가드레일을 지키면서 광고 매출이 가장 크게 늘어 채택했습니다.</p>
       </div>
@@ -127,22 +127,79 @@
         <picture><source media="(max-width:820px)" srcset="img/case02/rank-diagram-m.webp?v=202610190600" width="1000" height="1087"><img src="img/case02/rank-diagram.webp?v=202610190600" width="2240" height="1323" alt="리스트 안 순위와 클릭 변화 기울기 도식. 선물하기는 A안 12위 −32%에서 B안 1위 −11%로, 받은선물은 A안 10위 −34%에서 B안 2위 +9%로 바뀐다" loading="lazy"></picture>
       </figure>
       <div class="cs-sec cs-col">
-        <p class="cs-label">발견</p>
+        <p class="cs-label">1차 실험 - 발견</p>
         <h2>서비스가 놓인 순서와 클릭 변화가 함께 움직였습니다</h2>
       <p>선물하기는 A안에서 12번째, B안에서 맨 위에 놓였고, 클릭 감소 폭은 32%에서 11%로 줄었습니다. 받은선물은 10번째에서 2번째로 올라가자 감소가 증가로 바뀌었습니다.</p>
       <p>이 경향은 집행 기간 14일 내내 같은 방향이었습니다. 리스트 형식뿐 아니라 서비스가 놓이는 순서도 결과에 영향을 줄 수 있다는 단서였습니다.</p>
       </div>
     </section>
 
+    <section class="cs-block" id="round2">
+      <div class="cs-pair cs-pair--block">
+        <figure class="cs-stage" style="--cb:26.52%;--cbm:9.43%">
+        <picture><source media="(max-width:820px)" srcset="img/case03/grid-m-v8.webp" width="700" height="424"><img src="img/case03/grid-v8.webp" width="1096" height="822" alt="첫 화면 서비스 그리드. 선물하기, 받은선물, 톡딜, 이모티콘과 라이브쇼핑, 메이커스, 프렌즈, 모바일신분증이 4열 2행으로 놓여 있다"></picture>
+        <figcaption>첫 화면 그리드 · 4×2</figcaption>
+      </figure>
+        <figure class="cs-stage" style="--cb:15.33%;--cbm:6.76%">
+        <picture><source media="(max-width:820px)" srcset="img/case03/list-m-v8.webp" width="700" height="592"><img src="img/case03/list-v8.webp" width="1096" height="822" alt="그리드 아래 라이프 카테고리 리스트. 예약하기, 톡클라우드, 캘린더, 그리드에도 있는 이모티콘, 메일이 이름과 한 줄 설명으로 놓여 있다"></picture>
+        <figcaption>카테고리 리스트 · 이모티콘 중복 노출</figcaption>
+      </figure>
+    </div>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">2차 실험 - 설계</p>
+        <h2>그리드와 리스트의 역할을 나눴습니다</h2>
+        <p>1차 결과를 PO, PM과 다시 보면서 서비스가 놓인 위치에 따라 클릭이 달라진 부분을 짚었습니다. 그리드는 주요 서비스를 첫 화면에 둘 수 있고, 리스트는 더 많은 서비스를 설명과 함께 보여줄 수 있었습니다. 둘 중 하나를 고르는 대신 역할을 나누기로 했습니다.</p>
+        <p>매출이 큰 서비스는 첫 화면 그리드에 남기고, 그 아래에 카테고리 리스트를 이어 붙였습니다. 이 방향으로 직접 테스트하던 혼합안이 2차 실험의 공식 실험안이 됐습니다.</p>
+      </div>
+    </section>
+
     <section class="cs-block">
-      <figure class="cs-fig cs-stage" style="--cb:6.82%;--cbm:4.05%">
-        <picture><source media="(max-width:820px)" srcset="img/case02/next-mixed-m.webp?v=tb3" width="700" height="988"><img src="img/case02/next-mixed.webp?v=tb3" width="2240" height="1408" alt="다음 실험의 혼합 UI 첫 화면. 4열 2행 그리드와 광고 아래로 카테고리 리스트가 이어진다" loading="lazy"></picture>
-        <figcaption style="left:50%">다음 실험 · 그리드와 리스트를 함께</figcaption>
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/case03/buckets-m-v2.webp" width="700" height="763"><img src="img/case03/buckets-v2.webp" width="2240" height="845" alt="실험안 네 개의 첫 화면 그리드. A는 4열 3행, B는 4열 2행, C는 5열 2행, D는 4열 2행 그리드 아래 쇼핑 카테고리에 선물하기·받은선물·톡딜·라이브쇼핑을 다시 보여준다" loading="lazy"></picture>
       </figure>
       <div class="cs-sec cs-col">
+        <p class="cs-label">2차 실험 - 디자인 세부</p>
+        <h2>그리드의 칸 수와 배치만 달리한 네 안을 만들었습니다</h2>
+        <p>그리드의 칸 수와 리스트에서의 중복 노출 여부를 달리해 네 안을 디자인했습니다. A는 4×3, B와 D는 4×2, C는 5×2 그리드를 쓰고, D는 그리드의 서비스를 리스트에도 다시 보여줬습니다. 아이콘은 디자인 검토를 거쳐 홈 화면 다른 영역과 같은 그래픽 아이콘으로 맞췄습니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <figure class="cs-fig">
+        <picture><source media="(max-width:820px)" srcset="img/case02/r2-result-diagram-m.webp" width="1000" height="987"><img src="img/case02/r2-result-diagram.webp" width="2240" height="884" alt="2차 실험안별 인당 서비스 영역 클릭 변화 막대 도식. 대조군 대비 A안 −5.5%, B안 −8.2%, C안 −8.9%, D안 −5.7%" loading="lazy"></picture>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">2차 실험 - 결과</p>
+        <h2>가드레일을 지키면서 광고 매출이 다시 늘었습니다</h2>
+        <p>네 안 모두 선물하기 거래액 같은 가드레일 지표를 지켰고, B·C·D안의 인당 광고 매출은 대조군보다 12~13% 늘었습니다. 서비스 영역 클릭은 네 안 모두 줄었습니다. 그리드를 12칸 그대로 둔 A안은 클릭 감소가 가장 작았지만, 광고 매출 개선이 없었습니다.</p>
+        <p>반대로 서비스를 한 번이라도 클릭한 이용자의 비율은 네 안 모두 늘었고, 클릭된 서비스의 종류도 넓어졌습니다. 첫 화면 밖 서비스까지 찾아 들어가는 이용이 늘어난 것입니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <figure class="cs-fig cs-stage" style="--cb:23.93%;--cbm:16.46%">
+        <picture><source media="(max-width:820px)" srcset="img/case03/tabbar-m.webp" width="700" height="243"><img src="img/case03/tabbar.webp" width="2240" height="585" alt="더보기탭 하단 탭바. 맨 오른쪽 더보기 탭 위에 빨간 알림 점이 있다" loading="lazy"></picture>
+        <figcaption>하단 탭 알림 점</figcaption>
+      </figure>
+      <div class="cs-sec cs-col">
+        <p class="cs-label">2차 실험 - 분석</p>
+        <h2>줄어든 클릭은 알림 점을 보고 들어가던 이용에 몰려 있었습니다</h2>
+        <p>클릭 감소의 90% 이상은 하루 한 번꼴로 서비스를 누르던 방문자 3%에서 났습니다. 그리드 칸 수가 대조군과 같은 A안에서도 알림 점이 켜진 서비스의 클릭이 줄었습니다. 바뀐 아이콘 위에서 알림 점이 덜 보여 습관적인 클릭이 줄었다고 보고, 아이콘 채도와 리스트 구조를 함께 원인 후보로 두었습니다.</p>
+        <p>실험 중에는 일별 지표를 직접 확인하다가 iOS 일부 버전의 하단 탭에 알림 점이 표시되지 않는 문제도 찾았습니다. 바로 공유해 클라이언트 핫픽스가 적용됐고, 실험은 중단 없이 이어졌습니다.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <figure class="cs-fig cs-stage cs-abc-d" style="--cb:7.3%">
+        <img src="img/case03/next-trio.webp?v=tb3" width="2240" height="1315" alt="후속 보완안 세 화면. 그리드 아래 최근 사용 서비스, 직접 고르는 내 바로가기, 카테고리 탭으로 바로 이동하는 리스트" loading="lazy">
+        <figcaption style="left:22.77%">최근 사용 서비스</figcaption><figcaption style="left:50.0%">내 바로가기</figcaption><figcaption style="left:77.23%">카테고리 바로 이동</figcaption>
+      </figure>
+      <div class="cs-abc-m"><figure class="cs-stage" style="--cbm:4.14%"><img src="img/case03/next-recent-m.webp?v=tb3" width="700" height="967" alt="최근 사용 서비스 보완안" loading="lazy"><figcaption>최근 사용 서비스</figcaption></figure><figure class="cs-stage" style="--cbm:4.14%"><img src="img/case03/next-pinned-m.webp?v=tb3" width="700" height="967" alt="내 바로가기 보완안" loading="lazy"><figcaption>내 바로가기</figcaption></figure><figure class="cs-stage" style="--cbm:4.14%"><img src="img/case03/next-category-m.webp?v=tb3" width="700" height="967" alt="카테고리 바로 이동 보완안" loading="lazy"><figcaption>카테고리 바로 이동</figcaption></figure></div>
+      <div class="cs-sec cs-col">
         <p class="cs-label">다음 판단</p>
-        <h2>그리드와 리스트를 함께 쓰는 구조로 이어갔습니다</h2>
-      <p>B안을 채택한 뒤에도 서비스 클릭 감소는 과제로 남았습니다. 다음 실험에서는 주요 서비스를 첫 화면의 그리드에 두고, 그 아래에 카테고리 리스트를 이어 붙이는 혼합 구조를 검토했습니다. 이어진 과정은 <a class="cs-link" href="grid-list-hybrid.html">그리드·리스트 혼합 UI 실험</a>에 정리했습니다.</p>
+        <h2>자주 쓰던 서비스로 돌아가는 길을 함께 설계했습니다</h2>
+        <p>2차 실험이 진행되는 동안, 결과에 따라 바로 꺼낼 수 있도록 최근 사용 서비스, 직접 고르는 바로가기, 카테고리 바로 이동 같은 보완안을 미리 준비했습니다. 실험이 끝난 뒤에는 결과를 먼저 정리해 스쿼드에 공유했습니다.</p>
+        <p>지금은 이 결과를 바탕으로 알림 점이 잘 보이는 아이콘과 후속 디자인을 이어가고 있습니다.</p>
       </div>
     </section>
 
@@ -151,18 +208,18 @@
       <div class="cs-role-grid">
         <div>
           <h3>리드한 것</h3>
-          <ul><li>문제 재정의와 실험 발의</li><li>세 실험안의 UI·가이드·디자인 QA</li><li>결과 해석과 후속 실험 설계</li><li>디자인 시스템 영향 관리</li></ul>
+          <ul><li>문제 재정의와 1차 실험 발의</li><li>1·2차 실험안 UI·가이드·디자인 QA</li><li>1차 결과 해석과 2차 혼합안 설계</li><li>실험 중 지표 확인과 알림 표시 문제 발견</li><li>보완안 설계와 결과 정리</li></ul>
         </div>
         <div>
           <h3>함께 한 것</h3>
-          <ul><li>실험 조건·판정 지표 — PM, 데이터 분석가</li><li>통계 검정 — 데이터 분석가</li><li>광고 영향 분석 — 광고 분석 조직</li></ul>
+          <ul><li>실험 조건·판정 지표 — PM, 데이터 분석가</li><li>통계 검정 — 데이터 분석가</li><li>광고 영향 분석 — 광고 분석 조직</li><li>알림 표시 문제 수정 — 클라이언트 개발</li></ul>
         </div>
       </div>
     </section>
 
     <nav class="pager" aria-label="다른 프로젝트">
       <a href="pay-boosting.html"><small>Previous</small>페이 영역 트래픽 부스팅 실험</a>
-      <a href="grid-list-hybrid.html" style="text-align:right"><small>Next</small>그리드·리스트 혼합 UI 실험</a>
+      <a href="wallet-badge.html" style="text-align:right"><small>Next</small>지갑칩 N배지 실험</a>
     </nav>
   </article>
 </main>
