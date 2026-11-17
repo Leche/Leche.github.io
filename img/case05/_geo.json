@@ -1,18 +1,18 @@
 {
  "asis.webp": 24.65,
  "asis-m.webp": 21.34,
- "nudge-pair.webp": 6.96,
+ "nudge-pair.webp": 6.82,
  "nudge-pair.webp:x": [
-  33.66,
-  66.34
+  33.44,
+  66.56
  ],
- "nudge-asis-m.webp": 4.14,
- "nudge-tobe-m.webp": 4.14,
- "birthday-trio.webp": 6.96,
+ "nudge-asis-m.webp": 4.05,
+ "nudge-tobe-m.webp": 4.05,
+ "birthday-trio.webp": 6.82,
  "birthday-trio.webp:x": [
-  21.34,
+  20.89,
   50.0,
-  78.66
+  79.11
  ],
- "birthday-m.webp": 4.14
+ "birthday-m.webp": 4.05
 }

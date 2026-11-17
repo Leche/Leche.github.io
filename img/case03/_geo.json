@@ -1,20 +1,20 @@
 {
  "start-pair.webp": 6.82,
  "start-pair.webp:x": [
-  33.66,
-  66.34
+  33.44,
+  66.56
  ],
  "start-ctrl-m.webp": 4.05,
  "start-list-m.webp": 4.05,
  "tabbar.webp": 23.93,
  "tabbar-m.webp": 16.46,
- "next-trio.webp": 7.3,
+ "next-trio.webp": 7.16,
  "next-trio.webp:x": [
-  22.77,
-  50.0,
-  77.23
+  22.34,
+  49.98,
+  77.61
  ],
- "next-recent-m.webp": 4.14,
- "next-pinned-m.webp": 4.14,
- "next-category-m.webp": 4.14
+ "next-recent-m.webp": 4.05,
+ "next-pinned-m.webp": 4.05,
+ "next-category-m.webp": 4.05
 }

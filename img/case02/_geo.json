@@ -1,17 +1,17 @@
 {
- "scroll-pair-v2.webp": 6.96,
+ "scroll-pair-v2.webp": 6.82,
  "scroll-pair-v2.webp:x": [
-  33.66,
-  66.34
+  33.44,
+  66.56
  ],
- "scroll-a-m.webp": 4.14,
- "scroll-d-m-v2.webp": 4.14,
+ "scroll-a-m.webp": 4.05,
+ "scroll-d-m-v2.webp": 4.05,
  "grid-control.webp": 9.18,
  "abc-v5.webp": 6.82,
  "abc-v5.webp:x": [
-  22.77,
+  22.32,
   50.0,
-  77.23
+  77.68
  ],
  "abc-m-a-v5.webp": 4.05,
  "abc-m-b-v5.webp": 4.05,
@@ -25,5 +25,38 @@
   70.54
  ],
  "banner-carousel-m.webp": 7.31,
- "banner-grid-m.webp": 4.34
+ "banner-grid-m.webp": 4.34,
+ "d-round1.webp": 8.87,
+ "d-round1.webp:x": [
+  17.59,
+  39.2,
+  60.8,
+  82.41
+ ],
+ "d-round1-ctrl-m.webp": 3.75,
+ "d-round1-a-m.webp": 3.75,
+ "d-round1-b-m.webp": 3.75,
+ "d-round1-c-m.webp": 3.75,
+ "d-round1-list.webp": 8.36,
+ "d-round1-list.webp:x": [
+  34.82,
+  65.18
+ ],
+ "d-round1-list-a-m.webp": 4.58,
+ "d-round1-list-b-m.webp": 4.58,
+ "d-round2.webp": 7.05,
+ "d-round2-m.webp": 4.15,
+ "d-round2-five.webp": 9.51,
+ "d-round2-five.webp:x": [
+  15.0,
+  32.5,
+  50.0,
+  67.5,
+  85.0
+ ],
+ "d-round2-ctrl-m.webp": 4.07,
+ "d-round2-a-m.webp": 4.07,
+ "d-round2-b-m.webp": 4.07,
+ "d-round2-c-m.webp": 4.07,
+ "d-round2-d-m.webp": 4.07
 }
